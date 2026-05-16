@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0056)file:///Users/yasmani/Downloads/summer_plan_2026_14.html -->
+<!-- saved from url=(0056)file:///Users/yasmani/Downloads/summer_plan_2026_18.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -308,9 +308,9 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
 <body>
 
 <!-- STICKY TOP BAR -->
-<div class="top-bar">
+<div class="top-bar" style="visibility: visible;">
   <div class="top-bar-inner">
-    <div class="nav-logo">OBSIDIAN MEDIA</div>
+    <div class="nav-logo">SUMMER OS</div>
     <div class="nav-right">
       <div class="nav-date" id="navDate">SAT, MAY 16, 2026</div>
       <button class="nbtn" id="themeToggle" onclick="toggleTheme()" style="font-size:15px;padding:5px 10px;">☀︎</button>
@@ -318,10 +318,10 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     </div>
   </div>
   <!-- TAB BAR -->
-  <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab(&#39;dashboard&#39;)">Dashboard</button>
+  <div class="tab-bar" style="visibility: visible;">
+    <button class="tab-btn" onclick="switchTab(&#39;dashboard&#39;)">Dashboard</button>
     <button class="tab-btn" onclick="switchTab(&#39;planner&#39;)">Day Planner</button>
-    <button class="tab-btn" onclick="switchTab(&#39;counter&#39;)">Post Counter</button>
+    <button class="tab-btn active" onclick="switchTab(&#39;counter&#39;)">Post Counter</button>
     <button class="tab-btn" onclick="switchTab(&#39;plan&#39;)">The Plan</button>
     <button class="tab-btn" onclick="switchTab(&#39;ideas&#39;)">Ideas</button>
     <button class="tab-btn" onclick="switchTab(&#39;review&#39;)">Weekly Review</button>
@@ -333,10 +333,10 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   </div>
 </div>
 
-<div class="wrapper" style="opacity: 1; transition: opacity 0.3s;">
+<div class="wrapper" style="visibility: visible; opacity: 1; transition: opacity 0.25s;">
 
   <!-- ═══════════════ DASHBOARD TAB ═══════════════ -->
-  <div class="tab-panel active" id="tab-dashboard">
+  <div class="tab-panel" id="tab-dashboard">
 
     <!-- STATS BAR -->
     <div class="stats-bar">
@@ -347,8 +347,8 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
       </div>
       <div class="stat-card">
         <div class="stat-label">📅 Today</div>
-        <div class="stat-val" id="todayPct">11%</div>
-        <div class="stat-sub" id="todaySub">1 of 9 done</div>
+        <div class="stat-val" id="todayPct">0%</div>
+        <div class="stat-sub" id="todaySub">0 of 9 done</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">📬 Posts This Week</div>
@@ -360,7 +360,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         <div class="cd-nums">
           <div class="cd-block"><div class="cd-num" id="cdDays">107</div><div class="cd-unit">days</div></div>
           <div class="cd-block"><div class="cd-num" id="cdHrs">15</div><div class="cd-unit">hrs</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdMin">21</div><div class="cd-unit">min</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdMin">12</div><div class="cd-unit">min</div></div>
         </div>
       </div>
     </div>
@@ -379,17 +379,17 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
       <div class="schedule-wrap">
         <div class="sched-toolbar">
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <div class="prog-info"><b id="doneCount">1</b> / <b id="totalCount">9</b> done</div>
+            <div class="prog-info"><b id="doneCount">0</b> / <b id="totalCount">9</b> done</div>
             <div class="streak-badge" id="streakBadge">🔥 0 day streak</div>
           </div>
-          <div class="prog-bar-wrap"><div class="prog-bar" id="progBar" style="width: 11.1111%;"></div></div>
+          <div class="prog-bar-wrap"><div class="prog-bar" id="progBar" style="width:0%"></div></div>
           <div class="toolbar-btns">
             <button class="tbtn add" onclick="addSchedRow()">+ ADD</button>
             <button class="tbtn" onclick="resetSched()">↺ RESET</button>
           </div>
         </div>
         <div class="auto-reset-note"><div class="auto-dot"></div>Auto-resets at midnight every day</div>
-        <div id="schedList"><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">10:00 am</div><div class="sl">Wake up</div><button class="del-btn">×</button></div><div class="sched-item done"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">10:30 am</div><div class="sl">Breakfast</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">11:00 – 11:30 am</div><div class="sl">Finish gaming video edit</div><span class="stag tag-create">CREATE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">12:00 – 1:30 pm</div><div class="sl">Gym workout</div><span class="stag tag-grind">GRIND</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">1:30 – 2:00 pm</div><div class="sl">Lunch / go home</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">2:00 – 3:30 pm</div><div class="sl">Lifestyle video edit</div><span class="stag tag-create">CREATE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">3:30 – 4:00 pm</div><div class="sl">Shower</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">5:00 – 11:00 pm</div><div class="sl">Stream session (Valorant)</div><span class="stag tag-live">LIVE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">12:00 – 2:00 am</div><div class="sl">Sleep</div><button class="del-btn">×</button></div></div>
+        <div id="schedList"><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">10:00 am</div><div class="sl">Wake up</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">10:30 am</div><div class="sl">Breakfast</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">11:00 – 11:30 am</div><div class="sl">Finish gaming video edit</div><span class="stag tag-create">CREATE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">12:00 – 1:30 pm</div><div class="sl">Gym workout</div><span class="stag tag-grind">GRIND</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">1:30 – 2:00 pm</div><div class="sl">Lunch / go home</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">2:00 – 3:30 pm</div><div class="sl">Lifestyle video edit</div><span class="stag tag-create">CREATE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">3:30 – 4:00 pm</div><div class="sl">Shower</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">5:00 – 11:00 pm</div><div class="sl">Stream session (Valorant)</div><span class="stag tag-live">LIVE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">12:00 – 2:00 am</div><div class="sl">Sleep</div><button class="del-btn">×</button></div></div>
       </div>
     </div>
 
@@ -423,10 +423,10 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   </div>
 
   <!-- ═══════════════ POST COUNTER TAB ═══════════════ -->
-  <div class="tab-panel" id="tab-counter">
+  <div class="tab-panel active" id="tab-counter">
     <div class="sec-label">Weekly</div>
     <div class="sec-title">Post Counter</div>
-    <div class="pc-platforms-grid" id="postCounterGrid"></div>
+    <div class="pc-platforms-grid" id="postCounterGrid"><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">YouTube</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">Instagram</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">TikTok</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">Facebook</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">Snapchat</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div></div>
     <div class="pc-footer" style="margin-top:16px;">
       <div class="pc-week-total">Total this week: <b id="weekTotal">0</b></div>
       <button class="pc-reset-btn" onclick="resetPostCounts()">↺ RESET WEEK</button>
@@ -1055,16 +1055,44 @@ function buildDashboard(){
 document.getElementById('navDate').textContent=new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).toUpperCase();
 loadTheme();
 
-// show loading while fetching from Supabase
-document.querySelector('.wrapper').style.opacity='0';
-document.querySelector('.wrapper').style.transition='opacity .3s ease';
+// hide everything instantly before any render
+const _wrapper=document.querySelector('.wrapper');
+const _topbar=document.querySelector('.tab-bar');
+_wrapper.style.visibility='hidden';
+_topbar.style.visibility='hidden';
+// also hide top bar nav to prevent any flash
+document.querySelector('.top-bar').style.visibility='hidden';
 
 (async()=>{
-  await sbGet(); // pull latest data from Supabase into _cache
+  await sbGet();
   checkAutoReset();
-  buildDashboard();
-  const saved=_cache.activeTab;if(saved&&saved!=='dashboard')switchTab(saved);
-  document.querySelector('.wrapper').style.opacity='1';
+
+  // restore saved tab BEFORE building so no flash
+  const savedTab=_cache.activeTab||'dashboard';
+  activeTab=savedTab;
+
+  // activate correct tab button and panel silently
+  TABS.forEach(t=>{
+    const panel=document.getElementById('tab-'+t);
+    if(panel)panel.classList.toggle('active',t===savedTab);
+  });
+  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('active',TABS[i]===savedTab));
+
+  // build only what's needed for the active tab
+  if(savedTab==='dashboard')buildDashboard();
+  else if(savedTab==='planner'){buildDashboard();buildDayPlanner();}
+  else if(savedTab==='counter'){buildDashboard();buildPostCounter();}
+  else if(savedTab==='plan'){buildDashboard();buildContent();buildGoals();buildPlts();buildPills();}
+  else if(savedTab==='ideas'){buildDashboard();buildIdeas();}
+  else if(savedTab==='review'){buildDashboard();buildReviews();}
+  else buildDashboard();
+
+  document.querySelector('.wrapper').style.visibility='visible';
+  document.querySelector('.wrapper').style.opacity='0';
+  document.querySelector('.wrapper').style.transition='opacity .25s ease';
+  document.querySelector('.tab-bar').style.visibility='visible';
+  document.querySelector('.top-bar').style.visibility='visible';
+  requestAnimationFrame(()=>{ document.querySelector('.wrapper').style.opacity='1'; });
   setInterval(updateCountdown,60000);
   setInterval(()=>{if((_cache.lastDate||'')!==todayKey()){checkAutoReset();buildSched();}},60000);
 })();
