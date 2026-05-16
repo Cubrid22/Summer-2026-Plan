@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0056)file:///Users/yasmani/Downloads/summer_plan_2026_22.html -->
+<!-- saved from url=(0056)file:///Users/yasmani/Downloads/summer_plan_2026_25.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -288,6 +288,30 @@ body.edit-mode .add-card-btn{display:block;}
 
 footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted2);letter-spacing:2px;padding-top:40px;border-top:1px solid var(--border);margin-top:40px;}
 
+/* MONTHLY PLANNER */
+.mp-months{display:flex;flex-direction:column;gap:28px;}
+.mp-month{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.mp-month-header{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;background:var(--surface2);border-bottom:1px solid var(--border);}
+.mp-month-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;color:var(--text);}
+.mp-month-range{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;}
+.mp-month-body{padding:18px 22px;}
+.mp-goal-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.mp-goal-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted2);text-transform:uppercase;min-width:56px;flex-shrink:0;}
+.mp-goal-input{flex:1;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:8px 13px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:border-color .2s;}
+.mp-goal-input:focus{border-color:var(--orange);}
+.mp-goal-input::placeholder{color:var(--muted2);}
+.mp-divider{height:1px;background:var(--border);margin:14px 0 16px;}
+.mp-weeks-grid{display:flex;flex-direction:column;gap:8px;}
+.mp-week{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 16px;}
+.mp-week.is-current{border-color:var(--orange);}
+.mp-week-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.mp-week-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;}
+.mp-week.is-current .mp-week-label{color:var(--orange);}
+.mp-week-dates{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);}
+.mp-week-note{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;resize:none;min-height:58px;transition:border-color .2s;line-height:1.5;}
+.mp-week-note:focus{border-color:var(--orange);}
+.mp-week-note::placeholder{color:var(--muted2);}
+
 /* MOBILE */
 @media(max-width:600px){
   .top-bar-inner{padding:0 16px;}
@@ -323,7 +347,8 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   <div class="tab-bar">
     <button class="tab-btn" onclick="switchTab(&#39;dashboard&#39;)">Dashboard</button>
     <button class="tab-btn" onclick="switchTab(&#39;planner&#39;)">Day Planner</button>
-    <button class="tab-btn active" onclick="switchTab(&#39;counter&#39;)">Post Counter</button>
+    <button class="tab-btn active" onclick="switchTab(&#39;monthly&#39;)">Monthly</button>
+    <button class="tab-btn" onclick="switchTab(&#39;counter&#39;)">Post Counter</button>
     <button class="tab-btn" onclick="switchTab(&#39;plan&#39;)">The Plan</button>
     <button class="tab-btn" onclick="switchTab(&#39;ideas&#39;)">Ideas</button>
     <button class="tab-btn" onclick="switchTab(&#39;review&#39;)">Weekly Review</button>
@@ -361,8 +386,8 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         <div class="stat-label">⏳ Summer Ends</div>
         <div class="cd-nums">
           <div class="cd-block"><div class="cd-num" id="cdDays">107</div><div class="cd-unit">days</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdHrs">15</div><div class="cd-unit">hrs</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdMin">5</div><div class="cd-unit">min</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdHrs">12</div><div class="cd-unit">hrs</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdMin">8</div><div class="cd-unit">min</div></div>
         </div>
       </div>
     </div>
@@ -425,10 +450,10 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   </div>
 
   <!-- ═══════════════ POST COUNTER TAB ═══════════════ -->
-  <div class="tab-panel active" id="tab-counter">
+  <div class="tab-panel" id="tab-counter">
     <div class="sec-label">Weekly</div>
     <div class="sec-title">Post Counter</div>
-    <div class="pc-platforms-grid" id="postCounterGrid"><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">YouTube</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">Instagram</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">TikTok</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">Facebook</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div><div class="pc-platform-card"><div class="pc-platform-header"><div class="pc-platform-name">Snapchat</div><div class="pc-platform-total">0</div></div><div class="pc-types-list"><div class="pc-type-row"><div class="pc-type-name">Lifestyle</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Gaming</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">BTS</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Teaching</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Comedy</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">AI / Mind Tense</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div><div class="pc-type-row"><div class="pc-type-name">Creative</div><div class="pc-type-count">0</div><div class="pc-type-btns"><button class="pc-btn minus">−</button><button class="pc-btn plus">+</button></div></div></div></div></div>
+    <div class="pc-platforms-grid" id="postCounterGrid"></div>
     <div class="pc-footer" style="margin-top:16px;">
       <div class="pc-week-total">Total this week: <b id="weekTotal">0</b></div>
       <button class="pc-reset-btn" onclick="resetPostCounts()">↺ RESET WEEK</button>
@@ -442,21 +467,21 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     <div class="section">
       <div class="sec-label">Content System</div>
       <div class="sec-title">Content Types</div>
-      <div class="cgrid" id="contentGrid"><div class="ccard"><button class="cdel">×</button><div class="cbadge">Lifestyle</div><div class="ctitle">Lifestyle Videos</div><div class="cdesc">Expand creativity, learn new edits every week. Pull from 10 creative ideas list — film at least 1 per week with a hard deadline.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">Gaming · Cubrid</div><div class="ctitle">Gaming Videos</div><div class="cdesc">Stay consistent on Shorts. Start 1 long form per week — stop being scared and post.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">Behind the Scenes</div><div class="ctitle">BTS Videos</div><div class="cdesc">Tons of footage sitting there. Turn shot vs shot clips into a massive catalog — easy to edit and schedulable.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">Teaching</div><div class="ctitle">Teaching Videos</div><div class="cdesc">Study top teaching creators. Have 10 video ideas ready — record until you're excellent at it.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">Comedy</div><div class="ctitle">Comedy Videos</div><div class="cdesc">10 ideas already written. Batch film all of them and schedule so content is always stacked ahead.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">AI · Mind Tense</div><div class="ctitle">AI Teaching Videos</div><div class="cdesc">Restart the channel — it was already working. Come back improved and make it better than ever.</div></div><button class="add-card-btn">+ ADD CONTENT TYPE</button></div>
+      <div class="cgrid" id="contentGrid"></div>
     </div>
 
     <!-- BUSINESS -->
     <div class="section">
       <div class="sec-label">Business Moves</div>
       <div class="sec-title">Business Goals</div>
-      <div class="ggrid" id="goalsGrid"><div class="gcard"><button class="cdel">×</button><div class="gbadge">Product 💰</div><div class="gtitle">First LUT Pack</div><div class="gdesc">Study the DaVinci music video seller's marketing. Create your own spin on how to sell it.</div></div><div class="gcard"><button class="cdel">×</button><div class="gbadge">Email 💰</div><div class="gtitle">Email List</div><div class="gdesc">Research best platforms and start building. Foundation for every future monetization move.</div></div><div class="gcard"><button class="cdel">×</button><div class="gbadge">Portfolio</div><div class="gtitle">Website</div><div class="gdesc">Build out the Squarespace site for Obsidian Media. Client-facing priority.</div></div><div class="gcard"><button class="cdel">×</button><div class="gbadge">Store</div><div class="gtitle">Amazon / Stan Store</div><div class="gdesc">Set up the storefront, tie into content. Passive income alongside the LUT product.</div></div><button class="add-card-btn" style="border-radius: 12px;">+ ADD GOAL</button></div>
+      <div class="ggrid" id="goalsGrid"></div>
     </div>
 
     <!-- PLATFORMS -->
     <div class="section">
       <div class="sec-label">Platforms</div>
       <div class="sec-title">Where You're Posting</div>
-      <div class="pltlist" id="pltList"><div class="pltrow"><div class="pltname">YouTube</div><div class="pltdesc">Gaming (Cubrid) + Lifestyle (Obsidian). Goal: 1 long form gaming video per week.</div><button class="del-btn" style="margin-left:8px">×</button></div><div class="pltrow"><div class="pltname">Instagram</div><div class="pltdesc">START TRIAL REELS — top priority. Learn how the algorithm works and use it to grow.</div><button class="del-btn" style="margin-left:8px">×</button></div><div class="pltrow"><div class="pltname">TikTok</div><div class="pltdesc">Cross-post lifestyle + gaming content consistently.</div><button class="del-btn" style="margin-left:8px">×</button></div><div class="pltrow"><div class="pltname">Facebook</div><div class="pltdesc">Keep posting — photo posts earning well, monetization growing. Same-day event format works.</div><button class="del-btn" style="margin-left:8px">×</button></div><div class="pltrow"><div class="pltname">Snapchat</div><div class="pltdesc">Cross-posting channel — keep it moving.</div><button class="del-btn" style="margin-left:8px">×</button></div></div>
+      <div class="pltlist" id="pltList"></div>
       <div style="margin-top:10px"><button class="add-plt-btn" onclick="addPlt()">+ ADD PLATFORM</button></div>
     </div>
 
@@ -464,7 +489,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     <div class="section">
       <div class="sec-label">Weekly</div>
       <div class="sec-title">Content Calendar</div>
-      <div class="pills" id="pillsWrap"><div class="pill"><span>Lifestyle videos</span><button class="pdel">×</button></div><div class="pill"><span>Gaming videos</span><button class="pdel">×</button></div><div class="pill"><span>BTS videos</span><button class="pdel">×</button></div><div class="pill"><span>Teaching videos</span><button class="pdel">×</button></div><div class="pill"><span>AI channel</span><button class="pdel">×</button></div><div class="pill"><span>Comedy videos</span><button class="pdel">×</button></div><div class="pill"><span>Creative ideas</span><button class="pdel">×</button></div><div class="pill"><span>Trial Reels</span><button class="pdel">×</button></div><div class="pill"><span>Stream sessions</span><button class="pdel">×</button></div><button class="add-pill-btn">+ ADD</button></div>
+      <div class="pills" id="pillsWrap"></div>
     </div>
 
   </div>
@@ -496,6 +521,223 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     <div class="sec-title">Weekly Review</div>
     <div class="review-weeks" id="reviewList"></div>
     <button class="add-review-btn" onclick="addReview()">+ LOG THIS WEEK</button>
+  </div>
+
+  <!-- ═══════════════ MONTHLY PLANNER TAB ═══════════════ -->
+  <div class="tab-panel active" id="tab-monthly">
+    <div class="sec-label">Summer Overview</div>
+    <div class="sec-title">Monthly Planner</div>
+    <div id="monthlyPlanner"><div class="mp-months"><div class="mp-month">
+      <div class="mp-month-header">
+        <div class="mp-month-name">MAY 2026</div>
+        <div class="mp-month-range">Apr 30 – May 30</div>
+      </div>
+      <div class="mp-month-body">
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎯 Goal</div>
+          <input class="mp-goal-input" placeholder="Main goal for MAY..." value="">
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎬 Content</div>
+          <input class="mp-goal-input" placeholder="Content focus this month..." value="">
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">💰 Business</div>
+          <input class="mp-goal-input" placeholder="Business target this month..." value="">
+        </div>
+        <div class="mp-divider"></div>
+        <div class="mp-weeks-grid" id="mpWeeks_MAY"><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Apr 27 – May 3</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">May 4 – May 10</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week is-current">
+        <div class="mp-week-top">
+          <div class="mp-week-label">● THIS WEEK</div>
+          <div class="mp-week-dates">May 11 – May 17</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">May 18 – May 24</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">May 25 – May 31</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div></div>
+      </div>
+    </div><div class="mp-month">
+      <div class="mp-month-header">
+        <div class="mp-month-name">JUNE 2026</div>
+        <div class="mp-month-range">May 31 – Jun 29</div>
+      </div>
+      <div class="mp-month-body">
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎯 Goal</div>
+          <input class="mp-goal-input" placeholder="Main goal for JUNE..." value="">
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎬 Content</div>
+          <input class="mp-goal-input" placeholder="Content focus this month..." value="">
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">💰 Business</div>
+          <input class="mp-goal-input" placeholder="Business target this month..." value="">
+        </div>
+        <div class="mp-divider"></div>
+        <div class="mp-weeks-grid" id="mpWeeks_JUNE"><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">May 25 – May 31</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jun 1 – Jun 7</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jun 8 – Jun 14</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jun 15 – Jun 21</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jun 22 – Jun 28</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jun 29 – Jul 5</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div></div>
+      </div>
+    </div><div class="mp-month">
+      <div class="mp-month-header">
+        <div class="mp-month-name">JULY 2026</div>
+        <div class="mp-month-range">Jun 30 – Jul 30</div>
+      </div>
+      <div class="mp-month-body">
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎯 Goal</div>
+          <input class="mp-goal-input" placeholder="Main goal for JULY..." value="">
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎬 Content</div>
+          <input class="mp-goal-input" placeholder="Content focus this month..." value="">
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">💰 Business</div>
+          <input class="mp-goal-input" placeholder="Business target this month..." value="">
+        </div>
+        <div class="mp-divider"></div>
+        <div class="mp-weeks-grid" id="mpWeeks_JULY"><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jun 29 – Jul 5</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jul 6 – Jul 12</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jul 13 – Jul 19</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jul 20 – Jul 26</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jul 27 – Aug 2</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div></div>
+      </div>
+    </div><div class="mp-month">
+      <div class="mp-month-header">
+        <div class="mp-month-name">AUGUST 2026</div>
+        <div class="mp-month-range">Jul 31 – Aug 30</div>
+      </div>
+      <div class="mp-month-body">
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎯 Goal</div>
+          <input class="mp-goal-input" placeholder="Main goal for AUGUST..." value="">
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎬 Content</div>
+          <input class="mp-goal-input" placeholder="Content focus this month..." value="">
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">💰 Business</div>
+          <input class="mp-goal-input" placeholder="Business target this month..." value="">
+        </div>
+        <div class="mp-divider"></div>
+        <div class="mp-weeks-grid" id="mpWeeks_AUGUST"><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Jul 27 – Aug 2</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Aug 3 – Aug 9</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Aug 10 – Aug 16</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Aug 17 – Aug 23</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div><div class="mp-week">
+        <div class="mp-week-top">
+          <div class="mp-week-label">WEEK</div>
+          <div class="mp-week-dates">Aug 24 – Aug 30</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What&#39;s the plan for this week? Goals, shoots, edits, posts..."></textarea>
+      </div></div>
+      </div>
+    </div></div></div>
   </div>
 
   <footer>SUMMER 2026 · YASMANI · OBSIDIAN MEDIA LLC · CUBRID</footer>
@@ -627,7 +869,7 @@ function store(patch){
 }
 
 // ── TABS ──────────────────────────────────────────────────────────
-const TABS=['dashboard','planner','counter','plan','ideas','review'];
+const TABS=['dashboard','planner','monthly','counter','plan','ideas','review'];
 let activeTab='dashboard';
 function switchTab(id){
   activeTab=id;
@@ -637,6 +879,7 @@ function switchTab(id){
   });
   store({activeTab:id});
   if(id==='planner')buildDayPlanner();
+  if(id==='monthly')buildMonthly();
   if(id==='counter')buildPostCounter();
   if(id==='plan'){buildContent();buildGoals();buildPlts();buildPills();}
   if(id==='ideas')buildIdeas();
@@ -1046,6 +1289,119 @@ function buildReviews(){
   });
 }
 
+// ── MONTHLY PLANNER ───────────────────────────────────────────────
+const MP_MONTHS=[
+  {name:'MAY',start:'2026-05-01',end:'2026-05-31'},
+  {name:'JUNE',start:'2026-06-01',end:'2026-06-30'},
+  {name:'JULY',start:'2026-07-01',end:'2026-07-31'},
+  {name:'AUGUST',start:'2026-08-01',end:'2026-08-31'},
+];
+
+function mpGetWeeks(monthStart,monthEnd){
+  const weeks=[];
+  const start=new Date(monthStart);
+  const end=new Date(monthEnd);
+  const todayStr=todayKey();
+  // find monday of week containing monthStart
+  let cur=new Date(start);
+  const dow=cur.getDay();
+  cur.setDate(cur.getDate()-(dow===0?6:dow-1));
+  while(cur<=end){
+    const wStart=new Date(cur);
+    const wEnd=new Date(cur);wEnd.setDate(cur.getDate()+6);
+    const wKey=wStart.toISOString().slice(0,10);
+    const isCurrent=todayStr>=wKey&&todayStr<=wEnd.toISOString().slice(0,10);
+    const fmt=(d)=>d.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    weeks.push({key:wKey,label:`${fmt(wStart)} – ${fmt(wEnd)}`,isCurrent});
+    cur.setDate(cur.getDate()+7);
+  }
+  return weeks;
+}
+
+function mpSaveGoal(monthKey,field,val){
+  const mp=_cache.monthlyPlan||{};
+  if(!mp[monthKey])mp[monthKey]={};
+  mp[monthKey][field]=val;
+  store({monthlyPlan:mp});
+}
+
+function mpSaveWeekNote(weekKey,val){
+  const mp=_cache.monthlyPlan||{};
+  if(!mp.weeks)mp.weeks={};
+  mp.weeks[weekKey]=val;
+  store({monthlyPlan:mp});
+}
+
+function buildMonthly(){
+  const mp=_cache.monthlyPlan||{};
+  const container=document.getElementById('monthlyPlanner');
+  container.innerHTML='';
+  const wrap=document.createElement('div');wrap.className='mp-months';
+
+  MP_MONTHS.forEach(month=>{
+    const mData=mp[month.name]||{};
+    const weeks=mpGetWeeks(month.start,month.end);
+    const startFmt=new Date(month.start).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    const endFmt=new Date(month.end).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+
+    const card=document.createElement('div');card.className='mp-month';
+    card.innerHTML=`
+      <div class="mp-month-header">
+        <div class="mp-month-name">${month.name} 2026</div>
+        <div class="mp-month-range">${startFmt} – ${endFmt}</div>
+      </div>
+      <div class="mp-month-body">
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎯 Goal</div>
+          <input class="mp-goal-input" placeholder="Main goal for ${month.name}..." value="${mData.goal||''}"/>
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">🎬 Content</div>
+          <input class="mp-goal-input" placeholder="Content focus this month..." value="${mData.content||''}"/>
+        </div>
+        <div class="mp-goal-row">
+          <div class="mp-goal-label">💰 Business</div>
+          <input class="mp-goal-input" placeholder="Business target this month..." value="${mData.business||''}"/>
+        </div>
+        <div class="mp-divider"></div>
+        <div class="mp-weeks-grid" id="mpWeeks_${month.name}"></div>
+      </div>
+    `;
+
+    // save goals on blur
+    const inputs=card.querySelectorAll('.mp-goal-input');
+    const fields=['goal','content','business'];
+    inputs.forEach((inp,i)=>{
+      inp.addEventListener('blur',()=>mpSaveGoal(month.name,fields[i],inp.value.trim()));
+      inp.addEventListener('keydown',(e)=>{if(e.key==='Enter')inp.blur();});
+    });
+
+    // build weeks
+    const weeksContainer=card.querySelector(`#mpWeeks_${month.name}`);
+    weeks.forEach(week=>{
+      const note=(mp.weeks||{})[week.key]||'';
+      const wDiv=document.createElement('div');
+      wDiv.className='mp-week'+(week.isCurrent?' is-current':'');
+      wDiv.innerHTML=`
+        <div class="mp-week-top">
+          <div class="mp-week-label">${week.isCurrent?'● THIS WEEK':'WEEK'}</div>
+          <div class="mp-week-dates">${week.label}</div>
+        </div>
+        <textarea class="mp-week-note" placeholder="What's the plan for this week? Goals, shoots, edits, posts...">${note}</textarea>
+      `;
+      const ta=wDiv.querySelector('textarea');
+      ta.addEventListener('blur',()=>mpSaveWeekNote(week.key,ta.value));
+      // auto resize
+      ta.addEventListener('input',()=>{ta.style.height='auto';ta.style.height=ta.scrollHeight+'px';});
+      if(note){setTimeout(()=>{ta.style.height='auto';ta.style.height=ta.scrollHeight+'px';},0);}
+      weeksContainer.appendChild(wDiv);
+    });
+
+    wrap.appendChild(card);
+  });
+  container.appendChild(wrap);
+}
+
 // ── DASHBOARD BUILD ───────────────────────────────────────────────
 function buildDashboard(){
   loadHeroText();setupHeroEdits();
@@ -1077,6 +1433,7 @@ loadTheme();
   // build only what's needed for the active tab
   if(savedTab==='dashboard')buildDashboard();
   else if(savedTab==='planner'){buildDashboard();buildDayPlanner();}
+  else if(savedTab==='monthly'){buildDashboard();buildMonthly();}
   else if(savedTab==='counter'){buildDashboard();buildPostCounter();}
   else if(savedTab==='plan'){buildDashboard();buildContent();buildGoals();buildPlts();buildPills();}
   else if(savedTab==='ideas'){buildDashboard();buildIdeas();}
