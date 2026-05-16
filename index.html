@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0056)file:///Users/yasmani/Downloads/summer_plan_2026_11.html -->
+<!-- saved from url=(0056)file:///Users/yasmani/Downloads/summer_plan_2026_14.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -360,7 +360,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         <div class="cd-nums">
           <div class="cd-block"><div class="cd-num" id="cdDays">107</div><div class="cd-unit">days</div></div>
           <div class="cd-block"><div class="cd-num" id="cdHrs">15</div><div class="cd-unit">hrs</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdMin">36</div><div class="cd-unit">min</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdMin">21</div><div class="cd-unit">min</div></div>
         </div>
       </div>
     </div>
@@ -618,12 +618,10 @@ const load=()=>_cache;
 const get=(key)=>_cache[key]!==undefined?_cache[key]:D[key];
 const todayKey=()=>new Date().toISOString().slice(0,10);
 
-// store: mutate cache, save to localStorage immediately, debounce supabase write
 function store(patch){
   Object.assign(_cache,patch);
   localStorage.setItem(SK,JSON.stringify(_cache));
-  clearTimeout(_saveTimer);
-  _saveTimer=setTimeout(()=>sbSet(),300);
+  sbSet();
 }
 
 // ── TABS ──────────────────────────────────────────────────────────
@@ -673,7 +671,7 @@ function setupHeroEdits(){
       el.contentEditable='true';el.classList.add('editing');el.focus();
       const sel=window.getSelection(),r=document.createRange();r.selectNodeContents(el);sel.removeAllRanges();sel.addRange(r);
       const key=el.dataset.ei;
-      const done=()=>{el.contentEditable='false';el.classList.remove('editing');const d=load();const t=d.text||{};t[key]=el.textContent.trim();d.text=t;localStorage.setItem(SK,JSON.stringify(d));el.removeEventListener('blur',done);el.removeEventListener('keydown',onK);};
+      const done=()=>{el.contentEditable='false';el.classList.remove('editing');const t=_cache.text||{};t[key]=el.textContent.trim();store({text:t});el.removeEventListener('blur',done);el.removeEventListener('keydown',onK);};
       const onK=(e)=>{if(e.key==='Enter'){e.preventDefault();done();}if(e.key==='Escape')done();};
       el.addEventListener('blur',done);el.addEventListener('keydown',onK);
     };
@@ -698,14 +696,13 @@ function makeEditable(el,onSave){
 
 // ── AUTO RESET ────────────────────────────────────────────────────
 function checkAutoReset(){
-  const d=load();const lastDate=d.lastDate||'';const today=todayKey();
+  const lastDate=_cache.lastDate||'';const today=todayKey();
   if(lastDate!==today){
-    const sched=get('schedule');const checks=d.checkState||{};
+    const sched=get('schedule');const checks=_cache.checkState||{};
     const wasComplete=sched.length>0&&sched.every(i=>!!checks[i.id]);
-    let streak=d.streak||0;
+    let streak=_cache.streak||0;
     if(wasComplete)streak++;else if(lastDate)streak=0;
-    d.checkState={};d.lastDate=today;d.streak=streak;
-    localStorage.setItem(SK,JSON.stringify(d));
+    store({checkState:{},lastDate:today,streak});
   }
 }
 
@@ -756,12 +753,13 @@ function buildSched(){
   updateProg();updateStats();
 }
 function toggleCheck(id){
-  const d=load();const c=d.checkState||{};c[id]=!c[id];d.checkState=c;localStorage.setItem(SK,JSON.stringify(d));
+  const c=(_cache.checkState||{});c[id]=!c[id];
+  store({checkState:c});
   const sched=get('schedule');
   if(sched.every(i=>!!c[i.id])){const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
   buildSched();
 }
-function resetSched(){const d=load();d.checkState={};localStorage.setItem(SK,JSON.stringify(d));buildSched();}
+function resetSched(){store({checkState:{}});buildSched();}
 function updateProg(){
   const sched=get('schedule');const checks=load().checkState||{};
   const done=sched.filter(i=>!!checks[i.id]).length;
@@ -770,7 +768,7 @@ function updateProg(){
   document.getElementById('progBar').style.width=(sched.length?(done/sched.length*100):0)+'%';
 }
 function addSchedRow(){const arr=get('schedule');arr.push({id:'r'+Date.now(),time:'Time',label:'New task',tag:null});store({schedule:arr});buildSched();openModal(arr.length-1);}
-function delSchedRow(idx){const arr=get('schedule');const id=arr[idx].id;arr.splice(idx,1);const d=load();const c=d.checkState||{};delete c[id];d.schedule=arr;d.checkState=c;localStorage.setItem(SK,JSON.stringify(d));buildSched();}
+function delSchedRow(idx){const arr=get('schedule');const id=arr[idx].id;arr.splice(idx,1);const c=_cache.checkState||{};delete c[id];store({schedule:arr,checkState:c});buildSched();}
 function openModal(idx){if(!editMode)return;modalIdx=idx;const item=get('schedule')[idx];document.getElementById('mTime').value=item.time;document.getElementById('mLabel').value=item.label;document.getElementById('mTag').value=item.tag||'';document.getElementById('schedModal').classList.add('show');}
 function closeModal(){document.getElementById('schedModal').classList.remove('show');modalIdx=null;}
 function saveModal(){if(modalIdx===null)return;const arr=get('schedule');arr[modalIdx].time=document.getElementById('mTime').value.trim()||arr[modalIdx].time;arr[modalIdx].label=document.getElementById('mLabel').value.trim()||arr[modalIdx].label;arr[modalIdx].tag=document.getElementById('mTag').value||null;store({schedule:arr});closeModal();buildSched();}
@@ -797,7 +795,7 @@ function buildPrios(){
     const done=!!pdone[idx];
     const el=document.createElement('div');el.className=`pitem ${p.cls}${done?' done-p':''}`;
     el.innerHTML=`<div class="pchk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="pnum">${String(idx+1).padStart(2,'0')}</div><div class="ptxt">${p.text}</div><button class="del-btn">×</button>`;
-    el.querySelector('.pchk').onclick=(e)=>{e.stopPropagation();const d2=load();const pd=d2.prioDone||{};pd[idx]=!pd[idx];d2.prioDone=pd;localStorage.setItem(SK,JSON.stringify(d2));buildPrios();};
+    el.querySelector('.pchk').onclick=(e)=>{e.stopPropagation();const pd=_cache.prioDone||{};pd[idx]=!pd[idx];store({prioDone:pd});buildPrios();};
     el.querySelector('.del-btn').onclick=()=>{const a=get('priorities');a.splice(idx,1);store({priorities:a});buildPrios();};
     makeEditable(el.querySelector('.ptxt'),val=>{const a=get('priorities');a[idx].text=val;store({priorities:a});});
     list.appendChild(el);
@@ -863,26 +861,26 @@ function addDayTask(dateKey){
   const inputEl=document.getElementById('dpInput_'+dateKey);
   const catEl=document.getElementById('dpCat_'+dateKey);
   const text=inputEl.value.trim();if(!text)return;
-  const cat=catEl.value;const d=load();const dp=d.dayPlan||{};
+  const cat=catEl.value;const dp=_cache.dayPlan||{};
   if(!dp[dateKey])dp[dateKey]={tasks:[],open:true};
   dp[dateKey].tasks.push({id:'t'+Date.now(),text,cat,done:false});
-  d.dayPlan=dp;localStorage.setItem(SK,JSON.stringify(d));inputEl.value='';buildDayPlanner();
+  store({dayPlan:dp});inputEl.value='';buildDayPlanner();
 }
 function toggleDayTask(dateKey,taskId){
-  const d=load();const dp=d.dayPlan||{};
+  const dp=_cache.dayPlan||{};
   const tasks=(dp[dateKey]||{}).tasks||[];const t=tasks.find(t=>t.id===taskId);if(t)t.done=!t.done;
-  d.dayPlan=dp;localStorage.setItem(SK,JSON.stringify(d));buildDayPlanner();
+  store({dayPlan:dp});buildDayPlanner();
 }
 function deleteDayTask(dateKey,taskId){
-  const d=load();const dp=d.dayPlan||{};
+  const dp=_cache.dayPlan||{};
   if(dp[dateKey])dp[dateKey].tasks=(dp[dateKey].tasks||[]).filter(t=>t.id!==taskId);
-  d.dayPlan=dp;localStorage.setItem(SK,JSON.stringify(d));buildDayPlanner();
+  store({dayPlan:dp});buildDayPlanner();
 }
 function toggleDayOpen(dateKey){
-  const d=load();const dp=d.dayPlan||{};
+  const dp=_cache.dayPlan||{};
   if(!dp[dateKey])dp[dateKey]={tasks:[],open:true};
   dp[dateKey].open=!dp[dateKey].open;
-  d.dayPlan=dp;localStorage.setItem(SK,JSON.stringify(d));buildDayPlanner();
+  store({dayPlan:dp});buildDayPlanner();
 }
 function buildDayPlanner(){
   const weekStart=getWeekStart(dpWeekOffset);
