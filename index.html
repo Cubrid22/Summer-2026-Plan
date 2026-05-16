@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///Users/yasmani/Downloads/summer_plan_2026_7.html -->
+<!-- saved from url=(0055)file:///Users/yasmani/Downloads/summer_plan_2026_8.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Summer 2026 — Yasmani</title>
-<link href="./Summer 2026 — Yasmani_files/css2" rel="stylesheet">
+<link href="./index_files/css2" rel="stylesheet">
 <style>
 :root{--bg:#0d0d0d;--surface:#161616;--surface2:#1f1f1f;--border:#2a2a2a;--border2:#333;--text:#f0ede8;--muted:#777;--muted2:#555;--orange:#e8673a;--orange-dim:rgba(232,103,58,0.12);--green:#5dba7a;--green-dim:rgba(93,186,122,0.1);--accent:#c8b89a;}
 body.light-mode{--bg:#f5f2ee;--surface:#fff;--surface2:#ede9e3;--border:#ddd9d2;--border2:#ccc8c0;--text:#1a1a1a;--muted:#888;--muted2:#bbb;--orange:#c9522a;--orange-dim:rgba(201,82,42,0.10);--green:#3a9a5c;--green-dim:rgba(58,154,92,0.10);--accent:#7a6a54;}
@@ -319,8 +319,8 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   </div>
   <!-- TAB BAR -->
   <div class="tab-bar">
-    <button class="tab-btn" onclick="switchTab(&#39;dashboard&#39;)">Dashboard</button>
-    <button class="tab-btn active" onclick="switchTab(&#39;planner&#39;)">Day Planner</button>
+    <button class="tab-btn active" onclick="switchTab(&#39;dashboard&#39;)">Dashboard</button>
+    <button class="tab-btn" onclick="switchTab(&#39;planner&#39;)">Day Planner</button>
     <button class="tab-btn" onclick="switchTab(&#39;counter&#39;)">Post Counter</button>
     <button class="tab-btn" onclick="switchTab(&#39;plan&#39;)">The Plan</button>
     <button class="tab-btn" onclick="switchTab(&#39;ideas&#39;)">Ideas</button>
@@ -336,7 +336,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
 <div class="wrapper" style="opacity: 1; transition: opacity 0.3s;">
 
   <!-- ═══════════════ DASHBOARD TAB ═══════════════ -->
-  <div class="tab-panel" id="tab-dashboard">
+  <div class="tab-panel active" id="tab-dashboard">
 
     <!-- STATS BAR -->
     <div class="stats-bar">
@@ -347,8 +347,8 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
       </div>
       <div class="stat-card">
         <div class="stat-label">📅 Today</div>
-        <div class="stat-val" id="todayPct">0%</div>
-        <div class="stat-sub" id="todaySub">0 of 9 done</div>
+        <div class="stat-val" id="todayPct">11%</div>
+        <div class="stat-sub" id="todaySub">1 of 9 done</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">📬 Posts This Week</div>
@@ -359,8 +359,8 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         <div class="stat-label">⏳ Summer Ends</div>
         <div class="cd-nums">
           <div class="cd-block"><div class="cd-num" id="cdDays">107</div><div class="cd-unit">days</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdHrs">16</div><div class="cd-unit">hrs</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdMin">22</div><div class="cd-unit">min</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdHrs">15</div><div class="cd-unit">hrs</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdMin">56</div><div class="cd-unit">min</div></div>
         </div>
       </div>
     </div>
@@ -379,17 +379,17 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
       <div class="schedule-wrap">
         <div class="sched-toolbar">
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <div class="prog-info"><b id="doneCount">0</b> / <b id="totalCount">9</b> done</div>
+            <div class="prog-info"><b id="doneCount">1</b> / <b id="totalCount">9</b> done</div>
             <div class="streak-badge" id="streakBadge">🔥 0 day streak</div>
           </div>
-          <div class="prog-bar-wrap"><div class="prog-bar" id="progBar" style="width:0%"></div></div>
+          <div class="prog-bar-wrap"><div class="prog-bar" id="progBar" style="width: 11.1111%;"></div></div>
           <div class="toolbar-btns">
             <button class="tbtn add" onclick="addSchedRow()">+ ADD</button>
             <button class="tbtn" onclick="resetSched()">↺ RESET</button>
           </div>
         </div>
         <div class="auto-reset-note"><div class="auto-dot"></div>Auto-resets at midnight every day</div>
-        <div id="schedList"><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">10:00 am</div><div class="sl">Wake up</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">10:30 am</div><div class="sl">Breakfast</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">11:00 – 11:30 am</div><div class="sl">Finish gaming video edit</div><span class="stag tag-create">CREATE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">12:00 – 1:30 pm</div><div class="sl">Gym workout</div><span class="stag tag-grind">GRIND</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">1:30 – 2:00 pm</div><div class="sl">Lunch / go home</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">2:00 – 3:30 pm</div><div class="sl">Lifestyle video edit</div><span class="stag tag-create">CREATE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">3:30 – 4:00 pm</div><div class="sl">Shower</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">5:00 – 11:00 pm</div><div class="sl">Stream session (Valorant)</div><span class="stag tag-live">LIVE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">12:00 – 2:00 am</div><div class="sl">Sleep</div><button class="del-btn">×</button></div></div>
+        <div id="schedList"><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">10:00 am</div><div class="sl">Wake up</div><button class="del-btn">×</button></div><div class="sched-item done"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">10:30 am</div><div class="sl">Breakfast</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">11:00 – 11:30 am</div><div class="sl">Finish gaming video edit</div><span class="stag tag-create">CREATE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">12:00 – 1:30 pm</div><div class="sl">Gym workout</div><span class="stag tag-grind">GRIND</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">1:30 – 2:00 pm</div><div class="sl">Lunch / go home</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">2:00 – 3:30 pm</div><div class="sl">Lifestyle video edit</div><span class="stag tag-create">CREATE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">3:30 – 4:00 pm</div><div class="sl">Shower</div><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">5:00 – 11:00 pm</div><div class="sl">Stream session (Valorant)</div><span class="stag tag-live">LIVE</span><button class="del-btn">×</button></div><div class="sched-item"><div class="chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="st">12:00 – 2:00 am</div><div class="sl">Sleep</div><button class="del-btn">×</button></div></div>
       </div>
     </div>
 
@@ -411,134 +411,15 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   </div>
 
   <!-- ═══════════════ DAY PLANNER TAB ═══════════════ -->
-  <div class="tab-panel active" id="tab-planner">
+  <div class="tab-panel" id="tab-planner">
     <div class="sec-label">Week Plan</div>
     <div class="sec-title">Day Planner</div>
     <div class="dp-week-nav">
       <button class="dp-nav-btn" onclick="shiftWeek(-1)">← PREV</button>
-      <div class="dp-week-label" id="dpWeekLabel">This Week<span>May 11 – May 17</span></div>
+      <div class="dp-week-label" id="dpWeekLabel">This Week<span id="dpWeekRange"></span></div>
       <button class="dp-nav-btn" onclick="shiftWeek(1)">NEXT →</button>
     </div>
-    <div class="dp-days" id="dpDays"><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-11&#39;)">
-        <div><div class="dp-day-name">Monday</div><div class="dp-day-date">5/11</div></div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          
-          
-          <div class="dp-chevron">▾</div>
-        </div>
-      </div>
-      <div class="dp-day-body open">
-        <div class="dp-tasks" id="dpTasks_2026-05-11"><div class="dp-empty">Nothing planned yet — add something below</div></div>
-        <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-11" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-11&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-11"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-11&#39;)">+ ADD</button>
-        </div>
-      </div>
-    </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-12&#39;)">
-        <div><div class="dp-day-name">Tuesday</div><div class="dp-day-date">5/12</div></div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          
-          
-          <div class="dp-chevron">▸</div>
-        </div>
-      </div>
-      <div class="dp-day-body ">
-        <div class="dp-tasks" id="dpTasks_2026-05-12"><div class="dp-empty">Nothing planned yet — add something below</div></div>
-        <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-12" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-12&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-12"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-12&#39;)">+ ADD</button>
-        </div>
-      </div>
-    </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-13&#39;)">
-        <div><div class="dp-day-name">Wednesday</div><div class="dp-day-date">5/13</div></div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          
-          
-          <div class="dp-chevron">▸</div>
-        </div>
-      </div>
-      <div class="dp-day-body ">
-        <div class="dp-tasks" id="dpTasks_2026-05-13"><div class="dp-empty">Nothing planned yet — add something below</div></div>
-        <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-13" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-13&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-13"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-13&#39;)">+ ADD</button>
-        </div>
-      </div>
-    </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-14&#39;)">
-        <div><div class="dp-day-name">Thursday</div><div class="dp-day-date">5/14</div></div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          
-          
-          <div class="dp-chevron">▸</div>
-        </div>
-      </div>
-      <div class="dp-day-body ">
-        <div class="dp-tasks" id="dpTasks_2026-05-14"><div class="dp-empty">Nothing planned yet — add something below</div></div>
-        <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-14" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-14&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-14"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-14&#39;)">+ ADD</button>
-        </div>
-      </div>
-    </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-15&#39;)">
-        <div><div class="dp-day-name">Friday</div><div class="dp-day-date">5/15</div></div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          
-          
-          <div class="dp-chevron">▸</div>
-        </div>
-      </div>
-      <div class="dp-day-body ">
-        <div class="dp-tasks" id="dpTasks_2026-05-15"><div class="dp-empty">Nothing planned yet — add something below</div></div>
-        <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-15" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-15&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-15"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-15&#39;)">+ ADD</button>
-        </div>
-      </div>
-    </div><div class="dp-day-card today">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-16&#39;)">
-        <div><div class="dp-day-name">Saturday</div><div class="dp-day-date">5/16</div></div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          <div class="dp-today-badge">TODAY</div>
-          
-          <div class="dp-chevron">▾</div>
-        </div>
-      </div>
-      <div class="dp-day-body open">
-        <div class="dp-tasks" id="dpTasks_2026-05-16"><div class="dp-empty">Nothing planned yet — add something below</div></div>
-        <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-16" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-16&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-16"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-16&#39;)">+ ADD</button>
-        </div>
-      </div>
-    </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-17&#39;)">
-        <div><div class="dp-day-name">Sunday</div><div class="dp-day-date">5/17</div></div>
-        <div style="display:flex;align-items:center;gap:10px;">
-          
-          
-          <div class="dp-chevron">▸</div>
-        </div>
-      </div>
-      <div class="dp-day-body ">
-        <div class="dp-tasks" id="dpTasks_2026-05-17"><div class="dp-empty">Nothing planned yet — add something below</div></div>
-        <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-17" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-17&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-17"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-17&#39;)">+ ADD</button>
-        </div>
-      </div>
-    </div></div>
+    <div class="dp-days" id="dpDays"></div>
   </div>
 
   <!-- ═══════════════ POST COUNTER TAB ═══════════════ -->
@@ -690,25 +571,19 @@ const D={
 const SUPA_URL='https://yynkmpocstaitzgqpzbh.supabase.co';
 const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5bmttcG9jc3RhaXR6Z3FwemJoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5MzI1NDMsImV4cCI6MjA5NDUwODU0M30.jvOrLnA6op6rQFTGzWTeJ6L6p19P7XjOlEXXiRkFk9U';
 const SK='sp2026';
-
-// local cache so UI stays snappy
 let _cache={};
 
 async function sbGet(){
   try{
     const r=await fetch(`${SUPA_URL}/rest/v1/summeros?key=eq.${SK}&select=value`,{
-      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json'}
     });
     const rows=await r.json();
-    if(rows&&rows.length&&rows[0].value){
+    if(Array.isArray(rows)&&rows.length>0&&rows[0].value){
       _cache=JSON.parse(rows[0].value);
-      localStorage.setItem(SK,rows[0].value); // local backup
-    } else {
-      // nothing in supabase yet, try local
-      try{_cache=JSON.parse(localStorage.getItem(SK))||{};}catch{_cache={};}
     }
-  }catch{
-    // offline fallback
+  }catch(e){
+    console.warn('Supabase read failed',e);
     try{_cache=JSON.parse(localStorage.getItem(SK))||{};}catch{_cache={};}
   }
   return _cache;
@@ -716,21 +591,24 @@ async function sbGet(){
 
 async function sbSet(data){
   const val=JSON.stringify(data);
-  localStorage.setItem(SK,val); // always write local too
+  localStorage.setItem(SK,val);
   try{
-    await fetch(`${SUPA_URL}/rest/v1/summeros`,{
+    const r=await fetch(`${SUPA_URL}/rest/v1/summeros`,{
       method:'POST',
       headers:{
-        'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,
-        'Content-Type':'application/json','Prefer':'resolution=merge-duplicates'
+        'apikey':SUPA_KEY,
+        'Authorization':'Bearer '+SUPA_KEY,
+        'Content-Type':'application/json',
+        'Prefer':'resolution=merge-duplicates,return=minimal'
       },
       body:JSON.stringify({key:SK,value:val})
     });
-  }catch(e){console.warn('Supabase write failed, saved locally',e);}
+    if(!r.ok){console.warn('Supabase write error',r.status,await r.text());}
+  }catch(e){console.warn('Supabase write failed',e);}
 }
 
 const load=()=>_cache;
-const store=(patch)=>{Object.assign(_cache,patch);sbSet(_cache);};
+const store=(patch)=>{Object.assign(_cache,patch);sbSet({..._cache});};
 const get=(key)=>_cache[key]!==undefined?_cache[key]:D[key];
 const todayKey=()=>new Date().toISOString().slice(0,10);
 
