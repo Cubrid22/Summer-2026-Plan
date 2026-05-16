@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0056)file:///Users/yasmani/Downloads/summer_plan_2026_18.html -->
+<!-- saved from url=(0056)file:///Users/yasmani/Downloads/summer_plan_2026_22.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,8 @@
 body.light-mode{--bg:#f5f2ee;--surface:#fff;--surface2:#ede9e3;--border:#ddd9d2;--border2:#ccc8c0;--text:#1a1a1a;--muted:#888;--muted2:#bbb;--orange:#c9522a;--orange-dim:rgba(201,82,42,0.10);--green:#3a9a5c;--green-dim:rgba(58,154,92,0.10);--accent:#7a6a54;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+body:not(.ready) .wrapper{visibility:hidden!important;}
+body:not(.ready) .top-bar-inner,body:not(.ready) .tab-bar,body:not(.ready) .edit-banner{visibility:hidden!important;}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:998;opacity:.35;}
 body.light-mode::before{opacity:.06;}
 
@@ -305,10 +307,10 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
 }
 </style>
 </head>
-<body>
+<body class="ready">
 
 <!-- STICKY TOP BAR -->
-<div class="top-bar" style="visibility: visible;">
+<div class="top-bar">
   <div class="top-bar-inner">
     <div class="nav-logo">SUMMER OS</div>
     <div class="nav-right">
@@ -318,7 +320,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     </div>
   </div>
   <!-- TAB BAR -->
-  <div class="tab-bar" style="visibility: visible;">
+  <div class="tab-bar">
     <button class="tab-btn" onclick="switchTab(&#39;dashboard&#39;)">Dashboard</button>
     <button class="tab-btn" onclick="switchTab(&#39;planner&#39;)">Day Planner</button>
     <button class="tab-btn active" onclick="switchTab(&#39;counter&#39;)">Post Counter</button>
@@ -333,7 +335,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   </div>
 </div>
 
-<div class="wrapper" style="visibility: visible; opacity: 1; transition: opacity 0.25s;">
+<div class="wrapper" style="opacity: 1; transition: opacity 0.25s;">
 
   <!-- ═══════════════ DASHBOARD TAB ═══════════════ -->
   <div class="tab-panel" id="tab-dashboard">
@@ -360,7 +362,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         <div class="cd-nums">
           <div class="cd-block"><div class="cd-num" id="cdDays">107</div><div class="cd-unit">days</div></div>
           <div class="cd-block"><div class="cd-num" id="cdHrs">15</div><div class="cd-unit">hrs</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdMin">12</div><div class="cd-unit">min</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdMin">5</div><div class="cd-unit">min</div></div>
         </div>
       </div>
     </div>
@@ -440,21 +442,21 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     <div class="section">
       <div class="sec-label">Content System</div>
       <div class="sec-title">Content Types</div>
-      <div class="cgrid" id="contentGrid"></div>
+      <div class="cgrid" id="contentGrid"><div class="ccard"><button class="cdel">×</button><div class="cbadge">Lifestyle</div><div class="ctitle">Lifestyle Videos</div><div class="cdesc">Expand creativity, learn new edits every week. Pull from 10 creative ideas list — film at least 1 per week with a hard deadline.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">Gaming · Cubrid</div><div class="ctitle">Gaming Videos</div><div class="cdesc">Stay consistent on Shorts. Start 1 long form per week — stop being scared and post.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">Behind the Scenes</div><div class="ctitle">BTS Videos</div><div class="cdesc">Tons of footage sitting there. Turn shot vs shot clips into a massive catalog — easy to edit and schedulable.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">Teaching</div><div class="ctitle">Teaching Videos</div><div class="cdesc">Study top teaching creators. Have 10 video ideas ready — record until you're excellent at it.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">Comedy</div><div class="ctitle">Comedy Videos</div><div class="cdesc">10 ideas already written. Batch film all of them and schedule so content is always stacked ahead.</div></div><div class="ccard"><button class="cdel">×</button><div class="cbadge">AI · Mind Tense</div><div class="ctitle">AI Teaching Videos</div><div class="cdesc">Restart the channel — it was already working. Come back improved and make it better than ever.</div></div><button class="add-card-btn">+ ADD CONTENT TYPE</button></div>
     </div>
 
     <!-- BUSINESS -->
     <div class="section">
       <div class="sec-label">Business Moves</div>
       <div class="sec-title">Business Goals</div>
-      <div class="ggrid" id="goalsGrid"></div>
+      <div class="ggrid" id="goalsGrid"><div class="gcard"><button class="cdel">×</button><div class="gbadge">Product 💰</div><div class="gtitle">First LUT Pack</div><div class="gdesc">Study the DaVinci music video seller's marketing. Create your own spin on how to sell it.</div></div><div class="gcard"><button class="cdel">×</button><div class="gbadge">Email 💰</div><div class="gtitle">Email List</div><div class="gdesc">Research best platforms and start building. Foundation for every future monetization move.</div></div><div class="gcard"><button class="cdel">×</button><div class="gbadge">Portfolio</div><div class="gtitle">Website</div><div class="gdesc">Build out the Squarespace site for Obsidian Media. Client-facing priority.</div></div><div class="gcard"><button class="cdel">×</button><div class="gbadge">Store</div><div class="gtitle">Amazon / Stan Store</div><div class="gdesc">Set up the storefront, tie into content. Passive income alongside the LUT product.</div></div><button class="add-card-btn" style="border-radius: 12px;">+ ADD GOAL</button></div>
     </div>
 
     <!-- PLATFORMS -->
     <div class="section">
       <div class="sec-label">Platforms</div>
       <div class="sec-title">Where You're Posting</div>
-      <div class="pltlist" id="pltList"></div>
+      <div class="pltlist" id="pltList"><div class="pltrow"><div class="pltname">YouTube</div><div class="pltdesc">Gaming (Cubrid) + Lifestyle (Obsidian). Goal: 1 long form gaming video per week.</div><button class="del-btn" style="margin-left:8px">×</button></div><div class="pltrow"><div class="pltname">Instagram</div><div class="pltdesc">START TRIAL REELS — top priority. Learn how the algorithm works and use it to grow.</div><button class="del-btn" style="margin-left:8px">×</button></div><div class="pltrow"><div class="pltname">TikTok</div><div class="pltdesc">Cross-post lifestyle + gaming content consistently.</div><button class="del-btn" style="margin-left:8px">×</button></div><div class="pltrow"><div class="pltname">Facebook</div><div class="pltdesc">Keep posting — photo posts earning well, monetization growing. Same-day event format works.</div><button class="del-btn" style="margin-left:8px">×</button></div><div class="pltrow"><div class="pltname">Snapchat</div><div class="pltdesc">Cross-posting channel — keep it moving.</div><button class="del-btn" style="margin-left:8px">×</button></div></div>
       <div style="margin-top:10px"><button class="add-plt-btn" onclick="addPlt()">+ ADD PLATFORM</button></div>
     </div>
 
@@ -462,7 +464,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     <div class="section">
       <div class="sec-label">Weekly</div>
       <div class="sec-title">Content Calendar</div>
-      <div class="pills" id="pillsWrap"></div>
+      <div class="pills" id="pillsWrap"><div class="pill"><span>Lifestyle videos</span><button class="pdel">×</button></div><div class="pill"><span>Gaming videos</span><button class="pdel">×</button></div><div class="pill"><span>BTS videos</span><button class="pdel">×</button></div><div class="pill"><span>Teaching videos</span><button class="pdel">×</button></div><div class="pill"><span>AI channel</span><button class="pdel">×</button></div><div class="pill"><span>Comedy videos</span><button class="pdel">×</button></div><div class="pill"><span>Creative ideas</span><button class="pdel">×</button></div><div class="pill"><span>Trial Reels</span><button class="pdel">×</button></div><div class="pill"><span>Stream sessions</span><button class="pdel">×</button></div><button class="add-pill-btn">+ ADD</button></div>
     </div>
 
   </div>
@@ -1055,13 +1057,7 @@ function buildDashboard(){
 document.getElementById('navDate').textContent=new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).toUpperCase();
 loadTheme();
 
-// hide everything instantly before any render
-const _wrapper=document.querySelector('.wrapper');
-const _topbar=document.querySelector('.tab-bar');
-_wrapper.style.visibility='hidden';
-_topbar.style.visibility='hidden';
-// also hide top bar nav to prevent any flash
-document.querySelector('.top-bar').style.visibility='hidden';
+// hide everything instantly before any render - CSS handles it via body:not(.ready)
 
 (async()=>{
   await sbGet();
@@ -1087,12 +1083,10 @@ document.querySelector('.top-bar').style.visibility='hidden';
   else if(savedTab==='review'){buildDashboard();buildReviews();}
   else buildDashboard();
 
-  document.querySelector('.wrapper').style.visibility='visible';
+  document.body.classList.add('ready');
   document.querySelector('.wrapper').style.opacity='0';
   document.querySelector('.wrapper').style.transition='opacity .25s ease';
-  document.querySelector('.tab-bar').style.visibility='visible';
-  document.querySelector('.top-bar').style.visibility='visible';
-  requestAnimationFrame(()=>{ document.querySelector('.wrapper').style.opacity='1'; });
+  requestAnimationFrame(()=>{document.querySelector('.wrapper').style.opacity='1';});
   setInterval(updateCountdown,60000);
   setInterval(()=>{if((_cache.lastDate||'')!==todayKey()){checkAutoReset();buildSched();}},60000);
 })();
