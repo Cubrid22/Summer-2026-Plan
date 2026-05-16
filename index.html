@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)file:///Users/yasmani/Downloads/summer_plan_2026_5.html -->
+<!-- saved from url=(0055)file:///Users/yasmani/Downloads/summer_plan_2026_7.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -333,7 +333,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   </div>
 </div>
 
-<div class="wrapper">
+<div class="wrapper" style="opacity: 1; transition: opacity 0.3s;">
 
   <!-- ═══════════════ DASHBOARD TAB ═══════════════ -->
   <div class="tab-panel" id="tab-dashboard">
@@ -359,8 +359,8 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         <div class="stat-label">⏳ Summer Ends</div>
         <div class="cd-nums">
           <div class="cd-block"><div class="cd-num" id="cdDays">107</div><div class="cd-unit">days</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdHrs">17</div><div class="cd-unit">hrs</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdMin">10</div><div class="cd-unit">min</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdHrs">16</div><div class="cd-unit">hrs</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdMin">22</div><div class="cd-unit">min</div></div>
         </div>
       </div>
     </div>
@@ -686,11 +686,52 @@ const D={
   text:{hero_eyebrow:'Summer 2026 · Master Plan',hero_line1:'LOCKED',hero_line2:'IN.',hero_sub:'The full summer blueprint — daily schedule, content system, business goals. Check off each day and run it back.'},
 };
 
-// ── STORAGE ───────────────────────────────────────────────────────
+// ── SUPABASE STORAGE ──────────────────────────────────────────────
+const SUPA_URL='https://yynkmpocstaitzgqpzbh.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl5bmttcG9jc3RhaXR6Z3FwemJoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg5MzI1NDMsImV4cCI6MjA5NDUwODU0M30.jvOrLnA6op6rQFTGzWTeJ6L6p19P7XjOlEXXiRkFk9U';
 const SK='sp2026';
-const load=()=>{try{return JSON.parse(localStorage.getItem(SK))||{};}catch{return{};}};
-const store=(patch)=>{const d=load();Object.assign(d,patch);localStorage.setItem(SK,JSON.stringify(d));};
-const get=(key)=>{const d=load();return d[key]!==undefined?d[key]:D[key];};
+
+// local cache so UI stays snappy
+let _cache={};
+
+async function sbGet(){
+  try{
+    const r=await fetch(`${SUPA_URL}/rest/v1/summeros?key=eq.${SK}&select=value`,{
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+    });
+    const rows=await r.json();
+    if(rows&&rows.length&&rows[0].value){
+      _cache=JSON.parse(rows[0].value);
+      localStorage.setItem(SK,rows[0].value); // local backup
+    } else {
+      // nothing in supabase yet, try local
+      try{_cache=JSON.parse(localStorage.getItem(SK))||{};}catch{_cache={};}
+    }
+  }catch{
+    // offline fallback
+    try{_cache=JSON.parse(localStorage.getItem(SK))||{};}catch{_cache={};}
+  }
+  return _cache;
+}
+
+async function sbSet(data){
+  const val=JSON.stringify(data);
+  localStorage.setItem(SK,val); // always write local too
+  try{
+    await fetch(`${SUPA_URL}/rest/v1/summeros`,{
+      method:'POST',
+      headers:{
+        'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,
+        'Content-Type':'application/json','Prefer':'resolution=merge-duplicates'
+      },
+      body:JSON.stringify({key:SK,value:val})
+    });
+  }catch(e){console.warn('Supabase write failed, saved locally',e);}
+}
+
+const load=()=>_cache;
+const store=(patch)=>{Object.assign(_cache,patch);sbSet(_cache);};
+const get=(key)=>_cache[key]!==undefined?_cache[key]:D[key];
 const todayKey=()=>new Date().toISOString().slice(0,10);
 
 // ── TABS ──────────────────────────────────────────────────────────
@@ -1065,13 +1106,13 @@ const IDEA_COLORS={lifestyle:'var(--orange)',gaming:'#5b8ef0',bts:'var(--accent)
 function addIdea(){
   const input=document.getElementById('ideaInput');const text=input.value.trim();if(!text)return;
   const tag=document.getElementById('ideaTagSel').value;
-  const d=load();const ideas=d.ideas||[];
+  const ideas=get('ideas')||[];
   ideas.unshift({id:'i'+Date.now(),text,tag,date:todayKey()});
-  d.ideas=ideas;localStorage.setItem(SK,JSON.stringify(d));input.value='';buildIdeas();
+  store({ideas});input.value='';buildIdeas();
 }
-function deleteIdea(id){const d=load();d.ideas=(d.ideas||[]).filter(i=>i.id!==id);localStorage.setItem(SK,JSON.stringify(d));buildIdeas();}
+function deleteIdea(id){const ideas=(get('ideas')||[]).filter(i=>i.id!==id);store({ideas});buildIdeas();}
 function buildIdeas(){
-  const d=load();const ideas=d.ideas||[];const list=document.getElementById('ideasList');list.innerHTML='';
+  const ideas=get('ideas')||[];const list=document.getElementById('ideasList');list.innerHTML='';
   if(!ideas.length){list.innerHTML='<div class="empty-state">NO IDEAS YET — DROP ONE ABOVE ↑</div>';return;}
   ideas.forEach(idea=>{
     const color=IDEA_COLORS[idea.tag]||'var(--muted)';
@@ -1084,23 +1125,23 @@ function buildIdeas(){
 
 // ── WEEKLY REVIEW ─────────────────────────────────────────────────
 function addReview(){
-  const d=load();const reviews=d.reviews||[];
+  const reviews=get('reviews')||[];
   const weekNum=reviews.length+1;
   const now=new Date();
   const label=`Week ${weekNum} · ${now.toLocaleDateString('en-US',{month:'short',day:'numeric'})}`;
   reviews.unshift({id:'rv'+Date.now(),label,score:'',note:'',open:true});
-  d.reviews=reviews;localStorage.setItem(SK,JSON.stringify(d));buildReviews();
+  store({reviews});buildReviews();
 }
 function saveReview(id){
-  const d=load();const reviews=d.reviews||[];const r=reviews.find(r=>r.id===id);if(!r)return;
+  const reviews=get('reviews')||[];const r=reviews.find(r=>r.id===id);if(!r)return;
   r.score=document.getElementById('rscore_'+id).value.trim();
   r.note=document.getElementById('rnote_'+id).value.trim();r.open=false;
-  d.reviews=reviews;localStorage.setItem(SK,JSON.stringify(d));buildReviews();
+  store({reviews});buildReviews();
 }
-function deleteReview(id){const d=load();d.reviews=(d.reviews||[]).filter(r=>r.id!==id);localStorage.setItem(SK,JSON.stringify(d));buildReviews();}
+function deleteReview(id){const reviews=(get('reviews')||[]).filter(r=>r.id!==id);store({reviews});buildReviews();}
 function toggleReview(id){
-  const d=load();const reviews=d.reviews||[];const r=reviews.find(r=>r.id===id);if(!r)return;
-  r.open=!r.open;d.reviews=reviews;localStorage.setItem(SK,JSON.stringify(d));buildReviews();
+  const reviews=get('reviews')||[];const r=reviews.find(r=>r.id===id);if(!r)return;
+  r.open=!r.open;store({reviews});buildReviews();
 }
 function buildReviews(){
   const d=load();const reviews=d.reviews||[];const list=document.getElementById('reviewList');list.innerHTML='';
@@ -1123,12 +1164,20 @@ function buildDashboard(){
 // ── INIT ──────────────────────────────────────────────────────────
 document.getElementById('navDate').textContent=new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}).toUpperCase();
 loadTheme();
-checkAutoReset();
-buildDashboard();
-// restore last active tab
-const saved=load().activeTab;if(saved&&saved!=='dashboard')switchTab(saved);
-setInterval(updateCountdown,60000);
-setInterval(()=>{if((load().lastDate||'')!==todayKey()){checkAutoReset();buildSched();}},60000);
+
+// show loading while fetching from Supabase
+document.querySelector('.wrapper').style.opacity='0';
+document.querySelector('.wrapper').style.transition='opacity .3s ease';
+
+(async()=>{
+  await sbGet(); // pull latest data from Supabase into _cache
+  checkAutoReset();
+  buildDashboard();
+  const saved=_cache.activeTab;if(saved&&saved!=='dashboard')switchTab(saved);
+  document.querySelector('.wrapper').style.opacity='1';
+  setInterval(updateCountdown,60000);
+  setInterval(()=>{if((_cache.lastDate||'')!==todayKey()){checkAutoReset();buildSched();}},60000);
+})();
 </script>
 
 
