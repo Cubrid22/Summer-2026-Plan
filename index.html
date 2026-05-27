@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0048)file:///Users/yasmani/Downloads/summer-os_1.html -->
+<!-- saved from url=(0045)file:///Users/yasmani/Downloads/index_45.html -->
 <html lang="en" data-__embeded-gyazo-content-j-s="5.16.0" data-__gyazo-expander-enabled="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -274,6 +274,58 @@ body.edit-mode .add-card-btn{display:block;}
 .add-review-btn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;padding:12px 20px;border:1px dashed var(--border2);border-radius:12px;background:none;color:var(--muted2);cursor:pointer;transition:all .2s;width:100%;margin-top:10px;}
 .add-review-btn:hover{border-color:var(--orange);color:var(--orange);}
 
+/* CHECKLIST */
+.cl-task-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:16px;overflow:visible;}
+.cl-task-header{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none;background:var(--surface2);position:relative;border-radius:14px 14px 0 0;}
+.cl-task-drag{color:var(--muted2);cursor:grab;font-size:16px;flex-shrink:0;}
+.cl-task-drag:active{cursor:grabbing;}
+.cl-task-title{flex:1;font-size:15px;font-weight:500;color:var(--text);outline:none;}
+.cl-task-title.done-title{text-decoration:line-through;color:var(--muted);}
+.cl-task-progress{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:1px;white-space:nowrap;}
+.cl-task-del{background:none;border:none;color:var(--muted2);cursor:pointer;font-size:18px;padding:0 4px;transition:color .2s;flex-shrink:0;}
+.cl-task-del:hover{color:#e05555;}
+.cl-task-chevron{color:var(--muted2);font-size:12px;transition:transform .2s;flex-shrink:0;}
+.cl-task-chevron.open{transform:rotate(180deg);}
+.cl-subtasks{padding:0 18px 14px;}
+.cl-subtask{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);}
+.cl-subtask:last-child{border-bottom:none;}
+.cl-subtask-drag{color:var(--muted2);cursor:grab;font-size:14px;flex-shrink:0;}
+.cl-sub-chk{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border2);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+.cl-sub-chk.checked{background:var(--orange);border-color:var(--orange);}
+.cl-sub-chk.checked::after{content:'✓';color:white;font-size:11px;font-weight:700;}
+.cl-sub-name{flex:1;font-size:14px;color:var(--text);outline:none;background:none;border:none;cursor:text;}
+.cl-sub-name.done-sub{text-decoration:line-through;color:var(--muted);}
+.cl-sub-del{background:none;border:none;color:var(--muted2);cursor:pointer;font-size:16px;padding:0 4px;transition:color .2s;}
+.cl-sub-del:hover{color:#e05555;}
+.cl-add-sub{display:flex;gap:8px;margin-top:10px;}
+.cl-sub-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:7px 12px;font-size:13px;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;}
+.cl-sub-input:focus{border-color:var(--orange);}
+.cl-sub-add-btn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1px;padding:7px 14px;border-radius:8px;border:1px solid var(--border2);background:none;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap;}
+.cl-sub-add-btn:hover{border-color:var(--orange);color:var(--orange);}
+.cl-empty{text-align:center;color:var(--muted2);font-family:'DM Mono',monospace;font-size:12px;letter-spacing:1px;padding:48px 0;border:1px dashed var(--border);border-radius:14px;}
+.cl-status-wrap{position:relative;flex-shrink:0;}
+.cl-status{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:99px;cursor:pointer;border:1px solid;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:5px;}
+.cl-status::after{content:'▾';font-size:8px;opacity:0.7;}
+.cl-status-none{color:var(--muted);border-color:var(--border2);background:transparent;}
+.cl-status-editing{color:#e8673a;border-color:#e8673a;background:rgba(232,103,58,0.12);}
+.cl-status-review{color:#f5a623;border-color:#f5a623;background:rgba(245,166,35,0.12);}
+.cl-status-scheduled{color:#5b8ef0;border-color:#5b8ef0;background:rgba(91,142,240,0.12);}
+.cl-status-posted{color:#5dba7a;border-color:#5dba7a;background:rgba(93,186,122,0.12);}
+.cl-status-dropdown{position:absolute;top:calc(100% + 6px);right:0;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;overflow:hidden;z-index:500;min-width:120px;box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.cl-status-dropdown.hidden{display:none;}
+.cl-status-opt{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;cursor:pointer;transition:background .15s;border:none;width:100%;text-align:left;background:none;}
+.cl-status-opt:hover{background:var(--surface);}
+.cl-status-opt-editing{color:#e8673a;}
+.cl-status-opt-review{color:#f5a623;}
+.cl-status-opt-scheduled{color:#5b8ef0;}
+.cl-status-opt-posted{color:#5dba7a;}
+.cl-status-opt-{color:var(--muted);}
+.cl-status-opt-none{color:var(--muted);}
+.cl-sub-status{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:99px;cursor:pointer;border:1px solid;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:4px;}
+.cl-sub-status::after{content:'▾';font-size:7px;opacity:0.7;}
+.cl-sub-show-status{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);background:none;border:none;cursor:pointer;padding:2px 6px;opacity:0.5;flex-shrink:0;}
+.cl-sub-show-status:hover{opacity:1;}
+
 /* MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
@@ -351,7 +403,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   <div class="top-bar-inner">
     <div class="nav-logo">SUMMER OS</div>
     <div class="nav-right">
-      <div class="nav-date" id="navDate">THU, MAY 21, 2026</div>
+      <div class="nav-date" id="navDate">WED, MAY 27, 2026</div>
       <button class="nbtn" id="themeToggle" onclick="toggleTheme()" style="font-size:15px;padding:5px 10px;">☀︎</button>
       <button class="nbtn" id="editToggle" onclick="toggleEdit()">✎ EDIT</button>
     </div>
@@ -359,12 +411,13 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   <!-- TAB BAR -->
   <div class="tab-bar">
     <button class="tab-btn" onclick="switchTab(&#39;dashboard&#39;)">Dashboard</button>
-    <button class="tab-btn active" onclick="switchTab(&#39;planner&#39;)">Day Planner</button>
+    <button class="tab-btn" onclick="switchTab(&#39;planner&#39;)">Day Planner</button>
     <button class="tab-btn" onclick="switchTab(&#39;monthly&#39;)">Monthly</button>
     <button class="tab-btn" onclick="switchTab(&#39;counter&#39;)">Post Counter</button>
     <button class="tab-btn" onclick="switchTab(&#39;plan&#39;)">The Plan</button>
     <button class="tab-btn" onclick="switchTab(&#39;ideas&#39;)">Ideas</button>
     <button class="tab-btn" onclick="switchTab(&#39;review&#39;)">Weekly Review</button>
+    <button class="tab-btn active" onclick="switchTab(&#39;checklist&#39;)">Post Checklist</button>
   </div>
   <!-- EDIT BANNER -->
   <div class="edit-banner" id="editBanner">
@@ -392,15 +445,15 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
       </div>
       <div class="stat-card">
         <div class="stat-label">📬 Posts This Week</div>
-        <div class="stat-val green" id="weekPostsVal">3</div>
+        <div class="stat-val green" id="weekPostsVal">0</div>
         <div class="stat-sub">across all platforms</div>
       </div>
       <div class="countdown-card">
         <div class="stat-label">⏳ Summer Ends</div>
         <div class="cd-nums">
-          <div class="cd-block"><div class="cd-num" id="cdDays">102</div><div class="cd-unit">days</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdHrs">18</div><div class="cd-unit">hrs</div></div>
-          <div class="cd-block"><div class="cd-num" id="cdMin">14</div><div class="cd-unit">min</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdDays">96</div><div class="cd-unit">days</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdHrs">19</div><div class="cd-unit">hrs</div></div>
+          <div class="cd-block"><div class="cd-num" id="cdMin">51</div><div class="cd-unit">min</div></div>
         </div>
       </div>
     </div>
@@ -451,85 +504,68 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
   </div>
 
   <!-- ═══════════════ DAY PLANNER TAB ═══════════════ -->
-  <div class="tab-panel active" id="tab-planner">
+  <div class="tab-panel" id="tab-planner">
     <div class="sec-label">Week Plan</div>
     <div class="sec-title">Day Planner</div>
     <div class="dp-week-nav">
       <button class="dp-nav-btn" onclick="shiftWeek(-1)">← PREV</button>
-      <div class="dp-week-label" id="dpWeekLabel">This Week<span>May 18 – May 24</span></div>
+      <div class="dp-week-label" id="dpWeekLabel">This Week<span>May 25 – May 31</span></div>
       <button class="dp-nav-btn" onclick="shiftWeek(1)">NEXT →</button>
     </div>
     <div class="dp-days" id="dpDays"><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-18&#39;)">
-        <div><div class="dp-day-name">Monday</div><div class="dp-day-date">5/18</div></div>
+      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-25&#39;)">
+        <div><div class="dp-day-name">Monday</div><div class="dp-day-date">5/25</div></div>
         <div style="display:flex;align-items:center;gap:10px;">
           
-          <div class="dp-task-count">7/7</div>
-          <div class="dp-chevron">▾</div>
+          
+          <div class="dp-chevron">▸</div>
         </div>
       </div>
-      <div class="dp-day-body open">
-        <div class="dp-tasks" id="dpTasks_2026-05-18"><div class="dp-task done-t" draggable="true" data-task-id="t1779107568312" data-date-key="2026-05-18"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:#5b8ef0" title="Double-click to change category">Gaming</div><div class="dp-task-name" title="Double-click to edit">Edit 16 Valorant</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779109210731" data-date-key="2026-05-18"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--muted)" title="Double-click to change category">Other</div><div class="dp-task-name" title="Double-click to edit">CLEAR WOODEN DESK!</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779111513810" data-date-key="2026-05-18"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--muted)" title="Double-click to change category">Other</div><div class="dp-task-name" title="Double-click to edit">Return HEB order</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779111526305" data-date-key="2026-05-18"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--green)" title="Double-click to change category">Gym</div><div class="dp-task-name" title="Double-click to edit">Chest Workout</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779111562448" data-date-key="2026-05-18"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--muted)" title="Double-click to change category">Other</div><div class="dp-task-name" title="Double-click to edit">Buy top sirloin spinach and tortillas</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779118310167" data-date-key="2026-05-18"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--muted)" title="Double-click to change category">Other</div><div class="dp-task-name" title="Double-click to edit">Buy hand sanitizer</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779144722732" data-date-key="2026-05-18"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--muted)" title="Double-click to change category">Other</div><div class="dp-task-name" title="Double-click to edit">six mirrors posing video</div></div><button class="dp-task-del" title="Delete">×</button></div></div>
+      <div class="dp-day-body ">
+        <div class="dp-tasks" id="dpTasks_2026-05-25"><div class="dp-empty">Nothing planned yet — add something below</div></div>
         <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-18" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-18&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-18"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-18&#39;)">+ ADD</button>
+          <input class="dp-task-input" id="dpInput_2026-05-25" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-25&#39;)">
+          <select class="dp-cat-sel" id="dpCat_2026-05-25"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
+          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-25&#39;)">+ ADD</button>
         </div>
       </div>
     </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-19&#39;)">
-        <div><div class="dp-day-name">Tuesday</div><div class="dp-day-date">5/19</div></div>
+      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-26&#39;)">
+        <div><div class="dp-day-name">Tuesday</div><div class="dp-day-date">5/26</div></div>
         <div style="display:flex;align-items:center;gap:10px;">
           
-          <div class="dp-task-count">3/4</div>
-          <div class="dp-chevron">▾</div>
-        </div>
-      </div>
-      <div class="dp-day-body open">
-        <div class="dp-tasks" id="dpTasks_2026-05-19"><div class="dp-task done-t" draggable="true" data-task-id="t1779151769052" data-date-key="2026-05-19"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:#5b8ef0" title="Double-click to change category">Gaming</div><div class="dp-task-name" title="Double-click to edit">Clean Clean 3k</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task" draggable="true" data-task-id="t1779152130299" data-date-key="2026-05-19"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Import all Transformation videos of myself to my T9</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779152229990" data-date-key="2026-05-19"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Post first mind tense video</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779227662016" data-date-key="2026-05-19"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Post Comedy Video 1</div></div><button class="dp-task-del" title="Delete">×</button></div></div>
-        <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-19" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-19&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-19"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-19&#39;)">+ ADD</button>
-        </div>
-      </div>
-    </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-20&#39;)">
-        <div><div class="dp-day-name">Wednesday</div><div class="dp-day-date">5/20</div></div>
-        <div style="display:flex;align-items:center;gap:10px;">
           
-          <div class="dp-task-count">4/4</div>
-          <div class="dp-chevron">▾</div>
+          <div class="dp-chevron">▸</div>
         </div>
       </div>
-      <div class="dp-day-body open">
-        <div class="dp-tasks" id="dpTasks_2026-05-20"><div class="dp-task done-t" draggable="true" data-task-id="t1779273218379" data-date-key="2026-05-20"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Post Comedy Video 2</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779273223887" data-date-key="2026-05-20"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Post second mind tense video</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779273231603" data-date-key="2026-05-20"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Valorant clip</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task done-t" draggable="true" data-task-id="t1779273248762" data-date-key="2026-05-20"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--green)" title="Double-click to change category">Gym</div><div class="dp-task-name" title="Double-click to edit">Shoulder Workout</div></div><button class="dp-task-del" title="Delete">×</button></div></div>
+      <div class="dp-day-body ">
+        <div class="dp-tasks" id="dpTasks_2026-05-26"><div class="dp-empty">Nothing planned yet — add something below</div></div>
         <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-20" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-20&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-20"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-20&#39;)">+ ADD</button>
+          <input class="dp-task-input" id="dpInput_2026-05-26" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-26&#39;)">
+          <select class="dp-cat-sel" id="dpCat_2026-05-26"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
+          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-26&#39;)">+ ADD</button>
         </div>
       </div>
     </div><div class="dp-day-card today">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-21&#39;)">
-        <div><div class="dp-day-name">Thursday</div><div class="dp-day-date">5/21</div></div>
+      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-27&#39;)">
+        <div><div class="dp-day-name">Wednesday</div><div class="dp-day-date">5/27</div></div>
         <div style="display:flex;align-items:center;gap:10px;">
           <div class="dp-today-badge">TODAY</div>
-          <div class="dp-task-count">0/6</div>
+          
           <div class="dp-chevron">▾</div>
         </div>
       </div>
       <div class="dp-day-body open">
-        <div class="dp-tasks" id="dpTasks_2026-05-21"><div class="dp-task" draggable="true" data-task-id="t1779313822975" data-date-key="2026-05-21"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Import all transformation Videos of myself to my T9</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task" draggable="true" data-task-id="t1779319202671" data-date-key="2026-05-21"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--accent)" title="Double-click to change category">Filming</div><div class="dp-task-name" title="Double-click to edit">Clone Effect</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task" draggable="true" data-task-id="t1779319205519" data-date-key="2026-05-21"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Clone Effect</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task" draggable="true" data-task-id="t1779319208786" data-date-key="2026-05-21"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:#b07fef" title="Double-click to change category">Posting</div><div class="dp-task-name" title="Double-click to edit">Clone Effect</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task" draggable="true" data-task-id="t1779319213927" data-date-key="2026-05-21"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Valorant Reel</div></div><button class="dp-task-del" title="Delete">×</button></div><div class="dp-task" draggable="true" data-task-id="t1779319218491" data-date-key="2026-05-21"><span class="dp-drag-handle" title="Drag to reorder">⠿</span><div class="dp-task-chk"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6L5 9L10 3" stroke="#0d0d0d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="dp-task-info"><div class="dp-task-cat" style="color:var(--orange)" title="Double-click to change category">Editing</div><div class="dp-task-name" title="Double-click to edit">Comedy Video #3</div></div><button class="dp-task-del" title="Delete">×</button></div></div>
+        <div class="dp-tasks" id="dpTasks_2026-05-27"><div class="dp-empty">Nothing planned yet — add something below</div></div>
         <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-21" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-21&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-21"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-21&#39;)">+ ADD</button>
+          <input class="dp-task-input" id="dpInput_2026-05-27" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-27&#39;)">
+          <select class="dp-cat-sel" id="dpCat_2026-05-27"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
+          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-27&#39;)">+ ADD</button>
         </div>
       </div>
     </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-22&#39;)">
-        <div><div class="dp-day-name">Friday</div><div class="dp-day-date">5/22</div></div>
+      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-28&#39;)">
+        <div><div class="dp-day-name">Thursday</div><div class="dp-day-date">5/28</div></div>
         <div style="display:flex;align-items:center;gap:10px;">
           
           
@@ -537,16 +573,16 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         </div>
       </div>
       <div class="dp-day-body ">
-        <div class="dp-tasks" id="dpTasks_2026-05-22"><div class="dp-empty">Nothing planned yet — add something below</div></div>
+        <div class="dp-tasks" id="dpTasks_2026-05-28"><div class="dp-empty">Nothing planned yet — add something below</div></div>
         <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-22" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-22&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-22"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-22&#39;)">+ ADD</button>
+          <input class="dp-task-input" id="dpInput_2026-05-28" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-28&#39;)">
+          <select class="dp-cat-sel" id="dpCat_2026-05-28"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
+          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-28&#39;)">+ ADD</button>
         </div>
       </div>
     </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-23&#39;)">
-        <div><div class="dp-day-name">Saturday</div><div class="dp-day-date">5/23</div></div>
+      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-29&#39;)">
+        <div><div class="dp-day-name">Friday</div><div class="dp-day-date">5/29</div></div>
         <div style="display:flex;align-items:center;gap:10px;">
           
           
@@ -554,16 +590,16 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         </div>
       </div>
       <div class="dp-day-body ">
-        <div class="dp-tasks" id="dpTasks_2026-05-23"><div class="dp-empty">Nothing planned yet — add something below</div></div>
+        <div class="dp-tasks" id="dpTasks_2026-05-29"><div class="dp-empty">Nothing planned yet — add something below</div></div>
         <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-23" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-23&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-23"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-23&#39;)">+ ADD</button>
+          <input class="dp-task-input" id="dpInput_2026-05-29" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-29&#39;)">
+          <select class="dp-cat-sel" id="dpCat_2026-05-29"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
+          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-29&#39;)">+ ADD</button>
         </div>
       </div>
     </div><div class="dp-day-card">
-      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-24&#39;)">
-        <div><div class="dp-day-name">Sunday</div><div class="dp-day-date">5/24</div></div>
+      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-30&#39;)">
+        <div><div class="dp-day-name">Saturday</div><div class="dp-day-date">5/30</div></div>
         <div style="display:flex;align-items:center;gap:10px;">
           
           
@@ -571,11 +607,28 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
         </div>
       </div>
       <div class="dp-day-body ">
-        <div class="dp-tasks" id="dpTasks_2026-05-24"><div class="dp-empty">Nothing planned yet — add something below</div></div>
+        <div class="dp-tasks" id="dpTasks_2026-05-30"><div class="dp-empty">Nothing planned yet — add something below</div></div>
         <div class="dp-add-row">
-          <input class="dp-task-input" id="dpInput_2026-05-24" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-24&#39;)">
-          <select class="dp-cat-sel" id="dpCat_2026-05-24"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
-          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-24&#39;)">+ ADD</button>
+          <input class="dp-task-input" id="dpInput_2026-05-30" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-30&#39;)">
+          <select class="dp-cat-sel" id="dpCat_2026-05-30"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
+          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-30&#39;)">+ ADD</button>
+        </div>
+      </div>
+    </div><div class="dp-day-card">
+      <div class="dp-day-header" onclick="toggleDayOpen(&#39;2026-05-31&#39;)">
+        <div><div class="dp-day-name">Sunday</div><div class="dp-day-date">5/31</div></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          
+          
+          <div class="dp-chevron">▸</div>
+        </div>
+      </div>
+      <div class="dp-day-body ">
+        <div class="dp-tasks" id="dpTasks_2026-05-31"><div class="dp-empty">Nothing planned yet — add something below</div></div>
+        <div class="dp-add-row">
+          <input class="dp-task-input" id="dpInput_2026-05-31" placeholder="e.g. Edit Iron Fuel Lab clip 3, Chest day..." onkeydown="if(event.key===&#39;Enter&#39;)addDayTask(&#39;2026-05-31&#39;)">
+          <select class="dp-cat-sel" id="dpCat_2026-05-31"><option value="Editing">Editing</option><option value="Gaming">Gaming</option><option value="Gym">Gym</option><option value="Posting">Posting</option><option value="Filming">Filming</option><option value="Business">Business</option><option value="Other">Other</option></select>
+          <button class="dp-add-btn" onclick="addDayTask(&#39;2026-05-31&#39;)">+ ADD</button>
         </div>
       </div>
     </div></div>
@@ -587,7 +640,7 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     <div class="sec-title">Post Counter</div>
     <div class="pc-platforms-grid" id="postCounterGrid"></div>
     <div class="pc-footer" style="margin-top:16px;">
-      <div class="pc-week-total">Total this week: <b id="weekTotal">3</b></div>
+      <div class="pc-week-total">Total this week: <b id="weekTotal">0</b></div>
       <button class="pc-reset-btn" onclick="resetPostCounts()">↺ RESET WEEK</button>
     </div>
   </div>
@@ -653,6 +706,195 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
     <div class="sec-title">Weekly Review</div>
     <div class="review-weeks" id="reviewList"></div>
     <button class="add-review-btn" onclick="addReview()">+ LOG THIS WEEK</button>
+  </div>
+
+  <!-- ═══════════════ POST CHECKLIST TAB ═══════════════ -->
+  <div class="tab-panel active" id="tab-checklist">
+    <div class="sec-label">Daily</div>
+    <div class="sec-title">Post Checklist</div>
+    <div style="display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
+      <input id="clTaskInput" class="idea-input" placeholder="Add a task (e.g. Post on Mind Tense)..." style="flex:1;min-width:200px;" onkeydown="if(event.key===&#39;Enter&#39;)addChecklistTask()">
+      <button class="idea-add-btn" onclick="addChecklistTask()">+ ADD TASK</button>
+    </div>
+    <div id="checklistContainer">
+    <div class="cl-task-block" draggable="true" data-ti="0" ondragstart="clDragStart(event,&#39;task&#39;,0)" ondragover="clDragOver(event,&#39;task&#39;,0)" ondrop="clDrop(event,&#39;task&#39;,0)">
+      <div class="cl-task-header" onclick="clToggle(0)">
+        <span class="cl-task-drag" onclick="event.stopPropagation()">⠿</span>
+        <div class="cl-task-title" contenteditable="true" ondblclick="event.stopPropagation()" onblur="clRenameTask(0,this.innerText)" onclick="event.stopPropagation()">Post Lifestyle Video</div>
+        <span class="cl-task-progress">0/5</span>
+        <div class="cl-status-wrap" onclick="event.stopPropagation()">
+          <button class="cl-status cl-status-none" onclick="clOpenDropdown(&#39;clsd_0&#39;)">—</button>
+          <div class="cl-status-dropdown hidden" id="clsd_0_dd">
+            <button class="cl-status-opt cl-status-opt-none" onclick="event.stopPropagation();clSetStatus(0,&#39;&#39;)">None</button><button class="cl-status-opt cl-status-opt-editing" onclick="event.stopPropagation();clSetStatus(0,&#39;editing&#39;)">Editing</button><button class="cl-status-opt cl-status-opt-review" onclick="event.stopPropagation();clSetStatus(0,&#39;review&#39;)">In Review</button><button class="cl-status-opt cl-status-opt-scheduled" onclick="event.stopPropagation();clSetStatus(0,&#39;scheduled&#39;)">Scheduled</button><button class="cl-status-opt cl-status-opt-posted" onclick="event.stopPropagation();clSetStatus(0,&#39;posted&#39;)">Posted</button>
+          </div>
+        </div>
+        <button class="cl-task-del" onclick="event.stopPropagation();clDelTask(0)">×</button>
+        <span class="cl-task-chevron open">▾</span>
+      </div>
+      <div class="cl-subtasks">
+        
+          <div class="cl-subtask" draggable="true" data-si="0" ondragstart="clDragStart(event,&#39;sub&#39;,0,0)" ondragover="clDragOver(event,&#39;sub&#39;,0,0)" ondrop="clDrop(event,&#39;sub&#39;,0,0)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(0,0)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(0,0,this.innerText)">Post on TikTok</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(0,0)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(0,0)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="1" ondragstart="clDragStart(event,&#39;sub&#39;,0,1)" ondragover="clDragOver(event,&#39;sub&#39;,0,1)" ondrop="clDrop(event,&#39;sub&#39;,0,1)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(0,1)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(0,1,this.innerText)">Post on Instagram</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(0,1)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(0,1)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="2" ondragstart="clDragStart(event,&#39;sub&#39;,0,2)" ondragover="clDragOver(event,&#39;sub&#39;,0,2)" ondrop="clDrop(event,&#39;sub&#39;,0,2)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(0,2)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(0,2,this.innerText)">Post on YouTube</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(0,2)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(0,2)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="3" ondragstart="clDragStart(event,&#39;sub&#39;,0,3)" ondragover="clDragOver(event,&#39;sub&#39;,0,3)" ondrop="clDrop(event,&#39;sub&#39;,0,3)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(0,3)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(0,3,this.innerText)">Post on Facebook</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(0,3)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(0,3)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="4" ondragstart="clDragStart(event,&#39;sub&#39;,0,4)" ondragover="clDragOver(event,&#39;sub&#39;,0,4)" ondrop="clDrop(event,&#39;sub&#39;,0,4)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(0,4)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(0,4,this.innerText)">Post on Snapchat</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(0,4)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(0,4)">×</button>
+          </div>
+        <div class="cl-add-sub">
+          <input class="cl-sub-input" id="clSubInput_0" placeholder="Add subtask..." onkeydown="if(event.key===&#39;Enter&#39;)clAddSub(0)">
+          <button class="cl-sub-add-btn" onclick="clAddSub(0)">+ ADD</button>
+        </div>
+      </div>
+    </div>
+    <div class="cl-task-block" draggable="true" data-ti="1" ondragstart="clDragStart(event,&#39;task&#39;,1)" ondragover="clDragOver(event,&#39;task&#39;,1)" ondrop="clDrop(event,&#39;task&#39;,1)">
+      <div class="cl-task-header" onclick="clToggle(1)">
+        <span class="cl-task-drag" onclick="event.stopPropagation()">⠿</span>
+        <div class="cl-task-title" contenteditable="true" ondblclick="event.stopPropagation()" onblur="clRenameTask(1,this.innerText)" onclick="event.stopPropagation()">Post Gaming Video</div>
+        <span class="cl-task-progress">0/4</span>
+        <div class="cl-status-wrap" onclick="event.stopPropagation()">
+          <button class="cl-status cl-status-none" onclick="clOpenDropdown(&#39;clsd_1&#39;)">—</button>
+          <div class="cl-status-dropdown hidden" id="clsd_1_dd">
+            <button class="cl-status-opt cl-status-opt-none" onclick="event.stopPropagation();clSetStatus(1,&#39;&#39;)">None</button><button class="cl-status-opt cl-status-opt-editing" onclick="event.stopPropagation();clSetStatus(1,&#39;editing&#39;)">Editing</button><button class="cl-status-opt cl-status-opt-review" onclick="event.stopPropagation();clSetStatus(1,&#39;review&#39;)">In Review</button><button class="cl-status-opt cl-status-opt-scheduled" onclick="event.stopPropagation();clSetStatus(1,&#39;scheduled&#39;)">Scheduled</button><button class="cl-status-opt cl-status-opt-posted" onclick="event.stopPropagation();clSetStatus(1,&#39;posted&#39;)">Posted</button>
+          </div>
+        </div>
+        <button class="cl-task-del" onclick="event.stopPropagation();clDelTask(1)">×</button>
+        <span class="cl-task-chevron open">▾</span>
+      </div>
+      <div class="cl-subtasks">
+        
+          <div class="cl-subtask" draggable="true" data-si="0" ondragstart="clDragStart(event,&#39;sub&#39;,1,0)" ondragover="clDragOver(event,&#39;sub&#39;,1,0)" ondrop="clDrop(event,&#39;sub&#39;,1,0)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(1,0)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(1,0,this.innerText)">Post on TikTok</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(1,0)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(1,0)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="1" ondragstart="clDragStart(event,&#39;sub&#39;,1,1)" ondragover="clDragOver(event,&#39;sub&#39;,1,1)" ondrop="clDrop(event,&#39;sub&#39;,1,1)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(1,1)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(1,1,this.innerText)">Post on Instagram</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(1,1)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(1,1)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="2" ondragstart="clDragStart(event,&#39;sub&#39;,1,2)" ondragover="clDragOver(event,&#39;sub&#39;,1,2)" ondrop="clDrop(event,&#39;sub&#39;,1,2)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(1,2)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(1,2,this.innerText)">Post on YouTube</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(1,2)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(1,2)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="3" ondragstart="clDragStart(event,&#39;sub&#39;,1,3)" ondragover="clDragOver(event,&#39;sub&#39;,1,3)" ondrop="clDrop(event,&#39;sub&#39;,1,3)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(1,3)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(1,3,this.innerText)">Post on Facebook</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(1,3)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(1,3)">×</button>
+          </div>
+        <div class="cl-add-sub">
+          <input class="cl-sub-input" id="clSubInput_1" placeholder="Add subtask..." onkeydown="if(event.key===&#39;Enter&#39;)clAddSub(1)">
+          <button class="cl-sub-add-btn" onclick="clAddSub(1)">+ ADD</button>
+        </div>
+      </div>
+    </div>
+    <div class="cl-task-block" draggable="true" data-ti="2" ondragstart="clDragStart(event,&#39;task&#39;,2)" ondragover="clDragOver(event,&#39;task&#39;,2)" ondrop="clDrop(event,&#39;task&#39;,2)">
+      <div class="cl-task-header" onclick="clToggle(2)">
+        <span class="cl-task-drag" onclick="event.stopPropagation()">⠿</span>
+        <div class="cl-task-title" contenteditable="true" ondblclick="event.stopPropagation()" onblur="clRenameTask(2,this.innerText)" onclick="event.stopPropagation()">Post Mind Tense Video</div>
+        <span class="cl-task-progress">0/5</span>
+        <div class="cl-status-wrap" onclick="event.stopPropagation()">
+          <button class="cl-status cl-status-none" onclick="clOpenDropdown(&#39;clsd_2&#39;)">—</button>
+          <div class="cl-status-dropdown hidden" id="clsd_2_dd">
+            <button class="cl-status-opt cl-status-opt-none" onclick="event.stopPropagation();clSetStatus(2,&#39;&#39;)">None</button><button class="cl-status-opt cl-status-opt-editing" onclick="event.stopPropagation();clSetStatus(2,&#39;editing&#39;)">Editing</button><button class="cl-status-opt cl-status-opt-review" onclick="event.stopPropagation();clSetStatus(2,&#39;review&#39;)">In Review</button><button class="cl-status-opt cl-status-opt-scheduled" onclick="event.stopPropagation();clSetStatus(2,&#39;scheduled&#39;)">Scheduled</button><button class="cl-status-opt cl-status-opt-posted" onclick="event.stopPropagation();clSetStatus(2,&#39;posted&#39;)">Posted</button>
+          </div>
+        </div>
+        <button class="cl-task-del" onclick="event.stopPropagation();clDelTask(2)">×</button>
+        <span class="cl-task-chevron open">▾</span>
+      </div>
+      <div class="cl-subtasks">
+        
+          <div class="cl-subtask" draggable="true" data-si="0" ondragstart="clDragStart(event,&#39;sub&#39;,2,0)" ondragover="clDragOver(event,&#39;sub&#39;,2,0)" ondrop="clDrop(event,&#39;sub&#39;,2,0)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(2,0)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(2,0,this.innerText)">Post on TikTok</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(2,0)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(2,0)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="1" ondragstart="clDragStart(event,&#39;sub&#39;,2,1)" ondragover="clDragOver(event,&#39;sub&#39;,2,1)" ondrop="clDrop(event,&#39;sub&#39;,2,1)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(2,1)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(2,1,this.innerText)">Post on Instagram</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(2,1)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(2,1)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="2" ondragstart="clDragStart(event,&#39;sub&#39;,2,2)" ondragover="clDragOver(event,&#39;sub&#39;,2,2)" ondrop="clDrop(event,&#39;sub&#39;,2,2)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(2,2)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(2,2,this.innerText)">Post on YouTube</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(2,2)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(2,2)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="3" ondragstart="clDragStart(event,&#39;sub&#39;,2,3)" ondragover="clDragOver(event,&#39;sub&#39;,2,3)" ondrop="clDrop(event,&#39;sub&#39;,2,3)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(2,3)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(2,3,this.innerText)">Post on Facebook</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(2,3)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(2,3)">×</button>
+          </div>
+          <div class="cl-subtask" draggable="true" data-si="4" ondragstart="clDragStart(event,&#39;sub&#39;,2,4)" ondragover="clDragOver(event,&#39;sub&#39;,2,4)" ondrop="clDrop(event,&#39;sub&#39;,2,4)">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk" onclick="clToggleSub(2,4)"></div>
+            <div class="cl-sub-name" contenteditable="true" onblur="clRenameSub(2,4,this.innerText)">Post on Snapchat</div>
+            
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(2,4)" title="Show status">○</button>
+            <button class="cl-sub-del" onclick="clDelSub(2,4)">×</button>
+          </div>
+        <div class="cl-add-sub">
+          <input class="cl-sub-input" id="clSubInput_2" placeholder="Add subtask..." onkeydown="if(event.key===&#39;Enter&#39;)clAddSub(2)">
+          <button class="cl-sub-add-btn" onclick="clAddSub(2)">+ ADD</button>
+        </div>
+      </div>
+    </div></div>
   </div>
 
   <!-- ═══════════════ MONTHLY PLANNER TAB ═══════════════ -->
@@ -876,6 +1118,16 @@ footer{text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:va
 </div>
 
 <div class="toast" id="toast">🔥 DAY COMPLETE — RUN IT BACK</div>
+<div class="color-panel" id="colorPanel">
+  <div class="color-panel-header">
+    <div class="color-panel-title">🎨 Customize Colors</div>
+    <button class="color-panel-close" onclick="closeColorPanel()">✕</button>
+  </div>
+  <div class="color-panel-body" id="colorPanelBody"></div>
+  <div class="color-panel-footer">
+    <button class="color-reset-btn" onclick="resetColors()">↺ Reset to Default</button>
+  </div>
+</div>
 
 <!-- SCHEDULE MODAL -->
 <div class="modal-overlay" id="schedModal">
@@ -1001,7 +1253,7 @@ function store(patch){
 }
 
 // ── TABS ──────────────────────────────────────────────────────────
-const TABS=['dashboard','planner','monthly','counter','plan','ideas','review'];
+const TABS=['dashboard','planner','monthly','counter','plan','ideas','review','checklist'];
 let activeTab='dashboard';
 function switchTab(id){
   activeTab=id;
@@ -1016,7 +1268,8 @@ function switchTab(id){
   if(id==='plan'){buildContent();buildGoals();buildPlts();buildPills();}
   if(id==='ideas')buildIdeas();
   if(id==='review')buildReviews();
-}
+  if(id==='checklist')buildChecklist();
+  }
 
 // ── THEME ─────────────────────────────────────────────────────────
 function toggleTheme(){
@@ -1659,18 +1912,241 @@ loadTheme();
   else if(savedTab==='plan'){buildDashboard();buildContent();buildGoals();buildPlts();buildPills();}
   else if(savedTab==='ideas'){buildDashboard();buildIdeas();}
   else if(savedTab==='review'){buildDashboard();buildReviews();}
+  else if(savedTab==='checklist'){buildDashboard();buildChecklist();}
   else buildDashboard();
 
   document.body.classList.add('ready');
-  document.querySelector('.wrapper').style.opacity='0';
+    document.querySelector('.wrapper').style.opacity='0';
   document.querySelector('.wrapper').style.transition='opacity .25s ease';
   requestAnimationFrame(()=>{document.querySelector('.wrapper').style.opacity='1';});
   setInterval(updateCountdown,60000);
   setInterval(()=>{if((_cache.lastDate||'')!==todayKey()){checkAutoReset();buildSched();}},60000);
 })();
+
+// ── CHECKLIST ─────────────────────────────────────────────────────
+function getChecklist(){
+  if(!_cache.checklist){
+    _cache.checklist=[
+      {title:'Post on Mind Tense',open:true,status:'',subtasks:[
+        {name:'Post on TikTok',done:false},
+        {name:'Post on Instagram',done:false},
+        {name:'Post on YouTube',done:false},
+        {name:'Post on Facebook',done:false},
+        {name:'Post on Snapchat',done:false},
+      ]},
+      {title:'Post Lifestyle Video',open:true,subtasks:[
+        {name:'Post on TikTok',done:false},
+        {name:'Post on Instagram',done:false},
+        {name:'Post on YouTube',done:false},
+        {name:'Post on Facebook',done:false},
+        {name:'Post on Snapchat',done:false},
+      ]},
+      {title:'Post Gaming Video',open:true,status:'',subtasks:[
+        {name:'Post on TikTok',done:false},
+        {name:'Post on Instagram',done:false},
+        {name:'Post on YouTube',done:false},
+        {name:'Post on Facebook',done:false},
+      ]},
+      {title:'Post Mind Tense Video',open:true,status:'',subtasks:[
+        {name:'Post on TikTok',done:false},
+        {name:'Post on Instagram',done:false},
+        {name:'Post on YouTube',done:false},
+        {name:'Post on Facebook',done:false},
+        {name:'Post on Snapchat',done:false},
+      ]},
+    ];
+  }
+  return _cache.checklist;
+}
+function saveChecklist(data){_cache.checklist=data;sbSet();}
+
+const CL_STATUSES=['','editing','review','scheduled','posted'];
+const CL_STATUS_LABELS={'':'None',editing:'Editing',review:'In Review',scheduled:'Scheduled',posted:'Posted'};
+function clStatusOptClass(s){return s?'cl-status-opt cl-status-opt-'+s:'cl-status-opt cl-status-opt-none';}
+
+function clStatusClass(s){return s?'cl-status cl-status-'+s:'cl-status cl-status-none';}
+
+function clStatusDropdown(id,ti,si=null){
+  return `<div class="cl-status-wrap" id="${id}">
+    <button class="${clStatusClass(si===null?'__task__':'__sub__')}" onclick="event.stopPropagation();clOpenDropdown('${id}')"></button>
+    <div class="cl-status-dropdown hidden" id="${id}_dd">
+      ${CL_STATUSES.map(s=>`<button class="cl-status-opt cl-status-opt-${s}" onclick="event.stopPropagation();${si===null?`clSetStatus(${ti},'${s}')`:`clSetSubStatus(${ti},${si},'${s}')`}">${CL_STATUS_LABELS[s]}</button>`).join('')}
+    </div>
+  </div>`;
+}
+
+function buildChecklist(){
+  const tasks=getChecklist();
+  const container=document.getElementById('checklistContainer');
+  if(!container)return;
+  if(!tasks.length){
+    container.innerHTML='<div class="cl-empty">No tasks yet — add one above to get started</div>';
+    return;
+  }
+  container.innerHTML=tasks.map((task,ti)=>{
+    const status=task.status!==undefined?task.status:'';
+    const allDone=task.subtasks.length&&task.subtasks.every(s=>s.done);
+    const statusId=`clsd_${ti}`;
+    return `
+    <div class="cl-task-block" draggable="true" data-ti="${ti}" ondragstart="clDragStart(event,'task',${ti})" ondragover="clDragOver(event,'task',${ti})" ondrop="clDrop(event,'task',${ti})">
+      <div class="cl-task-header" onclick="clToggle(${ti})">
+        <span class="cl-task-drag" onclick="event.stopPropagation()">⠿</span>
+        <div class="cl-task-title${allDone?' done-title':''}" contenteditable="true"
+          ondblclick="event.stopPropagation()"
+          onblur="clRenameTask(${ti},this.innerText)"
+          onclick="event.stopPropagation()">${task.title}</div>
+        <span class="cl-task-progress">${task.subtasks.filter(s=>s.done).length}/${task.subtasks.length}</span>
+        <div class="cl-status-wrap" onclick="event.stopPropagation()">
+          <button class="${clStatusClass(status)}" onclick="clOpenDropdown('${statusId}')">${status?CL_STATUS_LABELS[status]:'—'}</button>
+          <div class="cl-status-dropdown hidden" id="${statusId}_dd">
+            ${CL_STATUSES.map(s=>`<button class="${clStatusOptClass(s)}" onclick="event.stopPropagation();clSetStatus(${ti},'${s}')">${CL_STATUS_LABELS[s]}</button>`).join('')}
+          </div>
+        </div>
+        <button class="cl-task-del" onclick="event.stopPropagation();clDelTask(${ti})">×</button>
+        <span class="cl-task-chevron${task.open?' open':''}">▾</span>
+      </div>
+      ${task.open?`<div class="cl-subtasks">
+        ${task.subtasks.map((sub,si)=>{
+          const subStatusId=`clsd_${ti}_${si}`;
+          const subStatus=sub.status||'';
+          return `
+          <div class="cl-subtask" draggable="true" data-si="${si}" ondragstart="clDragStart(event,'sub',${ti},${si})" ondragover="clDragOver(event,'sub',${ti},${si})" ondrop="clDrop(event,'sub',${ti},${si})">
+            <span class="cl-subtask-drag">⠿</span>
+            <div class="cl-sub-chk${sub.done?' checked':''}" onclick="clToggleSub(${ti},${si})"></div>
+            <div class="cl-sub-name${sub.done?' done-sub':''}" contenteditable="true"
+              onblur="clRenameSub(${ti},${si},this.innerText)">${sub.name}</div>
+            ${sub.showStatus?`<div class="cl-status-wrap">
+              <button class="${clStatusClass(subStatus).replace('cl-status ','cl-sub-status ').replace('cl-status-','cl-sub-status-')}" onclick="clOpenDropdown('${subStatusId}')">${subStatus?CL_STATUS_LABELS[subStatus]:'—'}</button>
+              <div class="cl-status-dropdown hidden" id="${subStatusId}_dd">
+                ${CL_STATUSES.map(s=>`<button class="${clStatusOptClass(s)}" onclick="event.stopPropagation();clSetSubStatus(${ti},${si},'${s}')">${CL_STATUS_LABELS[s]}</button>`).join('')}
+              </div>
+            </div>`:''}
+            <button class="cl-sub-show-status" onclick="clToggleSubStatus(${ti},${si})" title="${sub.showStatus?'Hide status':'Show status'}">${sub.showStatus?'◉':'○'}</button>
+            <button class="cl-sub-del" onclick="clDelSub(${ti},${si})">×</button>
+          </div>`;
+        }).join('')}
+        <div class="cl-add-sub">
+          <input class="cl-sub-input" id="clSubInput_${ti}" placeholder="Add subtask..." onkeydown="if(event.key==='Enter')clAddSub(${ti})">
+          <button class="cl-sub-add-btn" onclick="clAddSub(${ti})">+ ADD</button>
+        </div>
+      </div>`:''}
+    </div>`;
+  }).join('');
+}
+
+function clOpenDropdown(id){
+  // close all others first
+  document.querySelectorAll('.cl-status-dropdown').forEach(d=>{
+    if(d.id!==id+'_dd') d.classList.add('hidden');
+  });
+  const dd=document.getElementById(id+'_dd');
+  if(dd) dd.classList.toggle('hidden');
+}
+
+// close dropdowns on outside click
+document.addEventListener('click',()=>{
+  document.querySelectorAll('.cl-status-dropdown').forEach(d=>d.classList.add('hidden'));
+});
+
+function clSetStatus(ti,status){
+  document.querySelectorAll('.cl-status-dropdown').forEach(d=>d.classList.add('hidden'));
+  const tasks=getChecklist();
+  tasks[ti].status=status;
+  saveChecklist(tasks);buildChecklist();
+}
+
+function clSetSubStatus(ti,si,status){
+  document.querySelectorAll('.cl-status-dropdown').forEach(d=>d.classList.add('hidden'));
+  const tasks=getChecklist();
+  tasks[ti].subtasks[si].status=status;
+  saveChecklist(tasks);buildChecklist();
+}
+
+function clToggleSubStatus(ti,si){
+  const tasks=getChecklist();
+  tasks[ti].subtasks[si].showStatus=!tasks[ti].subtasks[si].showStatus;
+  saveChecklist(tasks);buildChecklist();
+}
+
+function addChecklistTask(){
+  const input=document.getElementById('clTaskInput');
+  const title=(input.value||'').trim();
+  if(!title)return;
+  const tasks=getChecklist();
+  tasks.push({title,open:true,subtasks:[]});
+  saveChecklist(tasks);
+  input.value='';
+  buildChecklist();
+}
+
+function clToggle(ti){
+  const tasks=getChecklist();
+  tasks[ti].open=!tasks[ti].open;
+  saveChecklist(tasks);
+  buildChecklist();
+}
+
+function clDelTask(ti){
+  const tasks=getChecklist();
+  tasks.splice(ti,1);
+  saveChecklist(tasks);
+  buildChecklist();
+}
+
+function clRenameTask(ti,val){
+  const tasks=getChecklist();
+  tasks[ti].title=val.trim()||tasks[ti].title;
+  saveChecklist(tasks);
+}
+
+function clAddSub(ti){
+  const input=document.getElementById('clSubInput_'+ti);
+  const name=(input.value||'').trim();
+  if(!name)return;
+  const tasks=getChecklist();
+  tasks[ti].subtasks.push({name,done:false});
+  saveChecklist(tasks);
+  buildChecklist();
+}
+
+function clToggleSub(ti,si){
+  const tasks=getChecklist();
+  tasks[ti].subtasks[si].done=!tasks[ti].subtasks[si].done;
+  saveChecklist(tasks);
+  buildChecklist();
+}
+
+function clDelSub(ti,si){
+  const tasks=getChecklist();
+  tasks[ti].subtasks.splice(si,1);
+  saveChecklist(tasks);
+  buildChecklist();
+}
+
+function clRenameSub(ti,si,val){
+  const tasks=getChecklist();
+  tasks[ti].subtasks[si].name=val.trim()||tasks[ti].subtasks[si].name;
+  saveChecklist(tasks);
+}
+
+let _clDrag={type:null,ti:null,si:null};
+
+function clDragStart(e,type,ti,si){_clDrag={type,ti,si:si??null};}
+function clDragOver(e,type,ti,si){e.preventDefault();}
+function clDrop(e,type,ti,si){
+  e.preventDefault();
+  const tasks=getChecklist();
+  if(_clDrag.type==='task'&&type==='task'&&_clDrag.ti!==ti){
+    const [moved]=tasks.splice(_clDrag.ti,1);
+    tasks.splice(ti,0,moved);
+    saveChecklist(tasks);buildChecklist();
+  } else if(_clDrag.type==='sub'&&type==='sub'&&_clDrag.ti===ti&&_clDrag.si!==si){
+    const [moved]=tasks[ti].subtasks.splice(_clDrag.si,1);
+    tasks[ti].subtasks.splice(si,0,moved);
+    saveChecklist(tasks);buildChecklist();
+  }
+}
 </script>
-
-
 
 <div id="hl-aria-live-message-container" aria-live="polite" class="visually-hidden"></div><div id="hl-aria-live-alert-container" role="alert" aria-live="assertive" class="visually-hidden"></div><bettercanvas-reminders><template shadowrootmode="open">
 <!-- saved from url=(0044)https://cubrid22.github.io/Summer-2026-Plan/ -->
